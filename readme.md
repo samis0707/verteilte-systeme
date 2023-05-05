@@ -9,9 +9,11 @@ Frontend:
 - javaScript
 - CSS
 - HTML
-*Eventuell Reveal.JS?* 
+- *Eventuell Reveal.JS?* 
+--> BootStrap
 
 Backend:
 - Express.JS
 - Node.JS
 - RESTful API
+- MongoDB
