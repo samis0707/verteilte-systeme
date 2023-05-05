@@ -22,3 +22,4 @@
 - `/:id`
 ---
 
+app.js und app2.js waren nur zur übung xd hahaha
