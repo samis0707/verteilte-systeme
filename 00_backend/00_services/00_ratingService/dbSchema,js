@@ -1,0 +1,4 @@
+//Mongoose
+const mongoose = require('mongoose');
+
+// Schema für ein Rating das in der Datenbanbk abgelegt wird
