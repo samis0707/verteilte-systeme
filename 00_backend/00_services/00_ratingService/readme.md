@@ -1,7 +1,7 @@
 # API Endpoints: CRUD
 
 - POST:
-    - `/add` erwartet ein JSON mit {category, rating 1-10, beschreibung, country, city, category}
+    - `/add` erwartet ein JSON mit {category, rating 1-10, beschreibung, country, city}
 ---
 - GET:
 
@@ -11,11 +11,12 @@
 - `/:id` gibt das rating mit einer bestimmten Datenbank-ID zurück
 - `/:category` (Erlaubte Inputs: country, city, activity, carrental, restaurant) gibt ratings nach einer Kategorie zurück
 - `/:country` gibt ratings eines bestimmten Landes zurück
+- `/:rating` gibt ratings mit einer bestimmten Bewertung zurück
 - `/:city` gibt ratings einer bestimmten Stadt zurück
 ---
 - PUT:
 
-- `/:id` {category, rating 1-10, beschreibung, country, city, category}
+- `/:id` {category, rating 1-10, beschreibung, country, city}
 ---
 - DELETE:
 
