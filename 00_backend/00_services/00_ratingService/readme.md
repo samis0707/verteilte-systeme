@@ -18,6 +18,8 @@
 
 - `/:id` {category, rating 1-10, beschreibung, country, city}
 ---
+- PATCH:
+---
 - DELETE:
 
 - `/:id`
