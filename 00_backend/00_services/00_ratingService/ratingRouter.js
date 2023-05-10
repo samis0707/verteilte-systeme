@@ -8,12 +8,12 @@ const router = express.Router();
 router.use(express.json());
 
 // Alle Ratings ausgeben lassen
-router.get('/', async(req, res) => {
+router.get('/all', async(req, res) => {
     try{
         const ratings = dbSchema.find();
         res.json(ratings);
     } catch(err) {
-        res.json({ message: err.message });
+        res.json({ message1: "Keine Ratings verfügbar"})
         console.log("Keine Ratings verfügbar")
     }
 })
