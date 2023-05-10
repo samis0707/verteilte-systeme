@@ -36,5 +36,9 @@ db.on('error', (error) => console.error(error))
 db.once('open', () => console.log("Database Connected"));
 
 //Routes
-const ratingRouter = require('ratingRouter');
-app.use(ratingRouter)
+const ratingRouter = require('./ratingRouter');
+app.use('/', ratingRouter);
+
+app.listen(port, () => {
+    console.log("Server gestartet auf Port: " + port);
+})
