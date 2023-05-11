@@ -9,3 +9,9 @@ Hier sollen alle backend systeme zusammengeführt werden:
     - hotel_db
     - flight_db
     - carRental_db
+
+
+** Was noch fehlt: **
+- Input handling
+- User Authentification
+- etc
