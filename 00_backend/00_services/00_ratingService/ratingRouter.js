@@ -7,22 +7,26 @@ const router = express.Router();
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
 
+
+// MIDDLEWARE
 // checkRating Middleware
 async function checkRating(req, res, next) {
     let rating;
     try {
-        rating = await dbSchema.js.findById(req.params.id);
+        rating = await dbSchema.findById(req.params.id);
         if (rating = null) {
             return res.status(404).json({ message: 'Rating nicht verfügbar'});
         }
     } catch (err) {
-          return res.status(500).json({ message: err.message });
+        console.log("Hängt in der middleWare fest")
+        return res.status(500).json({ message: err.message });
+          
     }
     res.rating = rating;
     next();
 }
 
-
+// GET-METHODS
 // Alle Ratings ausgeben lassen
 router.get('/all', async(req, res) => {
     try{
@@ -51,4 +55,27 @@ router.get('/country/:country', async(req, res) => {
         console.log("Keine Ratings verfügbar")
     }
 })
+
+// POST-METHOD
+router.post('/add', async (req, res) => {
+    try {
+        const newRating = new dbSchema({
+            // Hier muss eigentlich gecheckt werden ob man eine category einfügen darf
+            category: req.body.category,
+            rating: req.body.rating,
+            title: req.body.title,
+            description:  req.body.description,
+            country: req.body.country,
+            city: req.body.city,
+            // Timestamp automatisch einfügen
+            // created_from: req.body.created_from
+        })
+        addRating = await newRating.save();
+        res.status(201).json(addRating.save());
+    } catch (err) {
+        res.status(400).json({message: err.message});
+    }
+})
+
+
 module.exports = router;

@@ -1,4 +1,5 @@
 //Mongoose
+const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 
 // Musterschema für ein Rating das in der Datenbanbk abgelegt wird
@@ -12,6 +13,10 @@ const ratingMusterSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    title: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: true
@@ -22,8 +27,12 @@ const ratingMusterSchema = new mongoose.Schema({
     },
     city: {
         type: String,
-        rewuired: false
-    }
+        required: false
+    },
+    /*created_from: {
+        type: Date,
+        required: true
+    }*/
 
 });
 module.exports = mongoose.model('dbSchema', ratingMusterSchema)
