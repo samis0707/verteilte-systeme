@@ -1,9 +1,6 @@
 # API Endpoints: CRUD
 
 - GET:
-
-*HIER STIMMT WAS NICHT WIE KANN ICH DAS MACHEN DASS MAN DAS CONCATINATEN KANN?*
-
   - `/all` gibt alle ratings zurück
   Parameters:
   - `/id/:id` gibt das rating mit einer bestimmten Datenbank-ID zurück
