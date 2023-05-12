@@ -144,4 +144,31 @@ router.post('/add', async (req, res) => {
 });
 
 
+
+// PUT-METHODS
+router.put('/:id', checkRating, async(req, res) => {
+    try {
+        res.rating.category = req.body.category;
+        res.rating.rating = req.body.rating;
+        res.rating.title = req.body.title;
+        res.rating.description = req.body.description;
+        res.rating.country = req.body.country;
+        res.rating.city = req.body.city;
+
+        const updatedRating = await res.rating.save();
+        res.status(201).json(updatedRating);
+
+    } catch (err) { 
+        res.status(400).json({ message: err.message });
+    }
+})
+
+
+
+// PATCH-METHODS
+
+
+
+// DELETE-METHODS
+
 module.exports = router;

@@ -36,3 +36,17 @@ Content-Type: application/json
     "country": "germany",
     "city": "stuttgart"
 }
+
+
+###
+PUT http://localhost:3000/645e6e3c3bfb288684990525
+Content-Type: application/json
+
+{
+    "category": "city",
+    "rating": 7,
+    "title": "Karlsruhe",
+    "description": "Bombe man!",
+    "country": "germany",
+    "city": "Karlsruhe"
+}
