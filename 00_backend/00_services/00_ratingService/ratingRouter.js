@@ -13,8 +13,9 @@ router.use(express.json());
 async function checkRating(req, res, next) {
     let rating;
     try {
+        console.log("middleware fragt nach id..")
         rating = await dbSchema.findById(req.params.id);
-        if (rating = null) {
+        if (rating == null) {
             return res.status(404).json({ message: 'Rating nicht verfügbar'});
         }
     } catch (err) {
@@ -24,7 +25,7 @@ async function checkRating(req, res, next) {
     }
     res.rating = rating;
     next();
-}
+};
 
 // GET-METHODS
 // Alle Ratings ausgeben lassen
@@ -36,12 +37,12 @@ router.get('/all', async(req, res) => {
         res.json({ message: "Keine Ratings verfügbar"})
         console.log("Keine Ratings verfügbar")
     }
-})
+});
 
 // Rating nach DB-ID
 router.get('/id/:id', checkRating, (req, res) => {
     res.json(res.rating);
-})
+});
 
 
 // Rating nach Country

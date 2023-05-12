@@ -1,5 +1,4 @@
 //Mongoose
-const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 
 // Musterschema für ein Rating das in der Datenbanbk abgelegt wird
