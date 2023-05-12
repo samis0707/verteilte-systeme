@@ -54,13 +54,13 @@ router.get('/country/:country', async(req, res) => {
         res.json({ message: err.message });
         console.log("Keine Ratings verfügbar")
     }
-})
+});
 
 // POST-METHOD
 router.post('/add', async (req, res) => {
     try {
         const newRating = new dbSchema({
-            // Hier muss eigentlich gecheckt werden ob man eine category einfügen darf
+            // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zuLássig category eingefügt hat
             category: req.body.category,
             rating: req.body.rating,
             title: req.body.title,
@@ -70,12 +70,11 @@ router.post('/add', async (req, res) => {
             // Timestamp automatisch einfügen
             // created_from: req.body.created_from
         })
-        addRating = await newRating.save();
-        res.status(201).json(addRating.save());
+        res.status(201).json(await newRating.save());
     } catch (err) {
         res.status(400).json({message: err.message});
     }
-})
+});
 
 
 module.exports = router;

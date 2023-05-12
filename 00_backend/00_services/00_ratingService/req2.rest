@@ -12,11 +12,10 @@ POST http://localhost:3000/add
 Content-Type: application/json
 
 {
-    "category": "640f27a2cb429ec6537bd592",
+    "category": "City",
     "rating": 4,
     "title": "Stadt Stuttgart",
     "description": "Schöne Stadt, man kann viel machen",
     "country": "germany",
-    "city": "stuttgart",
-    /*"created_from": 2000,*/
+    "city": "stuttgart"
 }
