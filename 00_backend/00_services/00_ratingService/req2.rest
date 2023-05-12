@@ -2,7 +2,7 @@
 GET http://localhost:3000/all
 
 ### Ratings nach Land
-GET http://localhost:3000/country/germany
+GET http://localhost:3000/country/Germany
 
 ### Ratings nach ID
 GET http://localhost:3000/id/645e61178b8c02e9fabb62ee

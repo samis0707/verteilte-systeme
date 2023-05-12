@@ -7,7 +7,6 @@ const router = express.Router();
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
 
-
 // MIDDLEWARE
 // checkRating Middleware
 async function checkRating(req, res, next) {
@@ -28,6 +27,7 @@ async function checkRating(req, res, next) {
 };
 
 // GET-METHODS
+
 // Alle Ratings ausgeben lassen
 router.get('/all', async(req, res) => {
     try{
@@ -39,23 +39,33 @@ router.get('/all', async(req, res) => {
     }
 });
 
-// Rating nach DB-ID
+// Rating nach db-id
 router.get('/id/:id', checkRating, (req, res) => {
     res.json(res.rating);
 });
 
-
-// Rating nach Country
-// INPUT HANDLING HINZUFÜGEN Ziel: alles lowercase zusammen
+// Rating nach category 
+// Rating nach rating
+// Rating nach title
+// Rating nach description
+// Rating nach country
 router.get('/country/:country', async(req, res) => {
     try {
-        const countryRatings = await dbSchema.find({ country: req.params.country });
+        // Input aufbereiten und in db suchen
+        const countryRatings = await dbSchema.find({ country: req.params.country.toLowerCase() });
         res.json(countryRatings);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine Ratings verfügbar")
     }
 });
+
+// Rating nach city
+
+
+
+
+
 
 // POST-METHOD
 router.post('/add', async (req, res) => {
