@@ -12,10 +12,10 @@
   - `/city/:city` gibt ratings einer bestimmten Stadt zurück
 ---
 - POST:
-    - `/add` erwartet ein JSON mit {category, rating 1-10, beschreibung, country, city}
+    - `/add` erwartet ein JSON mit {category, rating 1-10, title, description, country, city}
 ---
 - PUT:
-  - `/:id` {category, rating 1-10, beschreibung, country, city}
+  - `/:id` {category, rating 1-10, title, description, country, city}
 ---
 - PATCH:
 ---
@@ -26,4 +26,5 @@
 Zusätzliche Features:
 - Input Validation -> category
 - wildcard suche -> bei beschreibung
-- 
+
+**Als kategorie noch hotels hinzufügen**
