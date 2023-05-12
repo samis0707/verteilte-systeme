@@ -1,58 +1,58 @@
-### alle Ratings
-GET http://localhost:3000/all
+### alle Hotels
+GET http://localhost:3001/all
 
-### Ratings nach ID
-GET http://localhost:3000/id/645e61178b8c02e9fabb62ee
+### Hotels nach ID
+GET http://localhost:3001/id/645e8485ccb07269fece931a
 
-### Ratings nach category
-GET http://localhost:3000/category/City
+### Hotels nach price_category
+GET http://localhost:3001/price_category/teuer
 
-### Ratings nach rating
-GET http://localhost:3000/rating/4
+### Hotels nach beds
+GET http://localhost:3001/beds/10
 
-### Ratings nach title
-GET http://localhost:3000/title/stadt
+### Hotels nach title
+GET http://localhost:3001/title/hotel
 
-### Ratings nach description
-GET http://localhost:3000/description/Wenig
+### Hotels nach description
+GET http://localhost:3001/description/unvergesslich
 
-### Ratings nach country
-GET http://localhost:3000/country/Germany
+### Hotels nach country
+GET http://localhost:3001/country/spain
 
-### Ratings nach city
-GET http://localhost:3000/city/Stuttgart
+### Hotels nach city
+GET http://localhost:3001/city/darcelona
 
 
 
-### Rating hinzufügen
-POST http://localhost:3000/add 
+### Hotel hinzufügen
+POST http://localhost:3001/add 
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 4,
-    "title": "Stadt Stuttgart",
-    "description": "Schöne Stadt, man kann wenig machen",
-    "country": "germany",
-    "city": "stuttgart"
+    "price_category": "günstig",
+    "beds": 4,
+    "title": "Grand Budapest Hotel",
+    "description": "Ich hatte das Vergnügen, im Grand Budapest Hotel zu übernachten und ich kann sagen, dass es ein unvergessliches Erlebnis war. Das Hotel ist sehr luxuriös und stilvoll eingerichtet und es ist leicht zu erkennen, dass hier viel Liebe zum Detail steckt.",
+    "country": "spain",
+    "city": "barcelona"
 }
 
 
 ###
-PUT http://localhost:3000/645e6e3c3bfb288684990525
+PUT http://localhost:3001/645e8485ccb07269fece931a
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 7,
-    "title": "Karlsruhe",
-    "description": "Bombe man!",
-    "country": "germany",
-    "city": "Karlsruhe"
+    "price_category": "teuer",
+    "beds": 5,
+    "title": "Grand Budapest Hotel",
+    "description": "Ich hatte das Vergnügen, im Grand Budapest Hotel zu übernachten und ich kann sagen, dass es ein unvergessliches Erlebnis war. Das Hotel ist sehr luxuriös und stilvoll eingerichtet und es ist leicht zu erkennen, dass hier viel Liebe zum Detail steckt.",
+    "country": "spain",
+    "city": "barcelona"
 }
 
 ###
-PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+PATCH  http://localhost:3000/645e8485ccb07269fece931a
 Content-Type: application/json
 
 {
@@ -61,4 +61,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/645e6e3c3bfb288684990525
+DELETE http://localhost:3001/645e8485ccb07269fece931a

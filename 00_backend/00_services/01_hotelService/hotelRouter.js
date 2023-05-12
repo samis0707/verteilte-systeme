@@ -1,6 +1,6 @@
 // Express.JS
 const express = require('express');
-const dbSchema = require('./dbSchema');
+const dbSchema = require('./dbSchema_01');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ async function checkHotel(req, res, next) {
         return res.status(500).json({ message: err.message });
           
     }
-    res.Hotel = hotel;
+    res.hotel = hotel;
     next();
 };
 
@@ -47,13 +47,13 @@ router.get('/id/:id', checkHotel, (req, res) => {
     res.json(res.hotel);
 });
 
-// Hotel nach category 
-router.get('/category/:category', async(req, res) => {
-    // hier muss noch abfrage nach array input [country, city, activity, carrental, restaurant]
+// Hotel nach price_category 
+router.get('/price_category/:price_category', async(req, res) => {
+    // hier muss noch abfrage nach array input [günstig, ok, teuer]
     try {
         // Input aufbereiten und in db suchen
-        const categoryHotels = await dbSchema.find({ category: req.params.category.toLowerCase() });
-        res.json(categoryHotels);
+        const price_categoryHotels = await dbSchema.find({ price_category: req.params.price_category.toLowerCase() });
+        res.json(price_categoryHotels);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine Hotels verfügbar")
@@ -66,7 +66,7 @@ router.get('/beds/:beds', async (req, res) => {
         // in nummer umwandeln und checken ob zwischen 1 und 5
         const beds = parseInt(req.params.beds)
         if (isNaN(beds) || beds < 1 || beds > 6) {
-            return res.status(400).json({ error: 'Anzahl der Betten müssen eine Zahl zwischen 1 und 5 sein' });
+            return res.status(400).json({ error: 'Anzahl der Betten muss zwischen 1 und 5 liegen' });
         }
         const bedsHotel = await dbSchema.find({ beds });
         res.json(bedsHotel);
@@ -128,7 +128,7 @@ router.post('/add', async (req, res) => {
     try {
         const newHotel = new dbSchema({
             // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zulässig category eingefügt hat
-            category: req.body.category,
+            price_category: req.body.price_category,
             beds: req.body.beds,
             title: req.body.title,
             description:  req.body.description,
@@ -148,7 +148,7 @@ router.post('/add', async (req, res) => {
 // PUT-METHOD
 router.put('/:id', checkHotel, async(req, res) => {
     try {
-        res.hotel.category = req.body.category;
+        res.hotel.price_category = req.body.price_category;
         res.hotel.beds = req.body.beds;
         res.hotel.title = req.body.title;
         res.hotel.description = req.body.description;
