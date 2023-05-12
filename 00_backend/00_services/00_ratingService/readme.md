@@ -1,8 +1,5 @@
 # API Endpoints: CRUD
 
-- POST:
-    - `/add` erwartet ein JSON mit {category, rating 1-10, beschreibung, country, city}
----
 - GET:
 
 *HIER STIMMT WAS NICHT WIE KANN ICH DAS MACHEN DASS MAN DAS CONCATINATEN KANN?*
@@ -16,6 +13,9 @@ Parameters:
 - `/description/:description` gibt ratings mit *wildcard* begriff zurück der iwie in beschreibung vorkommt
 - `/country/:country` gibt ratings eines bestimmten Landes zurück
 - `/city/:city` gibt ratings einer bestimmten Stadt zurück
+---
+- POST:
+    - `/add` erwartet ein JSON mit {category, rating 1-10, beschreibung, country, city}
 ---
 - PUT:
 

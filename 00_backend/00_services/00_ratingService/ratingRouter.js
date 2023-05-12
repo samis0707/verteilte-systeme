@@ -45,9 +45,56 @@ router.get('/id/:id', checkRating, (req, res) => {
 });
 
 // Rating nach category 
+router.get('/category/:category', async(req, res) => {
+    // hier muss noch abfrage nach array input [country, city, activity, carrental, restaurant]
+    try {
+        // Input aufbereiten und in db suchen
+        const categoryRatings = await dbSchema.find({ category: req.params.category.toLowerCase() });
+        res.json(categoryRatings);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine Ratings verfügbar")
+    }
+});
+
 // Rating nach rating
+router.get('/rating/:rating', async (req, res) => {
+    try {
+        // in nummer umwandeln und checken ob zwischen 1 und 10
+        const rating = parseInt(req.params.rating);
+        if (isNaN(rating) || rating >= 1 || rating <= 10) {
+            return res.status(400).json({ error: 'Rating muss Zahl zwischen 1 und 10 sein' });
+        }
+        const ratingRatings = await dbSchema.find({ rating });
+        res.json(ratingRatings);
+    } catch (err) {
+        res.json({ message: err.message });
+        console.log("Keine Ratings verfügbar")
+    }
+  });
+
 // Rating nach title
+router.get('/title/:title', async(req, res) => {
+    try {
+        const titleRatings = await dbSchema.find({ title: req.params.title });
+        res.json(titleRatings);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine Ratings verfügbar")
+    }
+});
+
 // Rating nach description
+router.get('/description/:description', async(req, res) => {
+    try {
+        const descriptionRatings = await dbSchema.find({ description: req.params.description });
+        res.json(descriptionRatings);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine Ratings verfügbar")
+    }
+});
+
 // Rating nach country
 router.get('/country/:country', async(req, res) => {
     try {
@@ -61,7 +108,16 @@ router.get('/country/:country', async(req, res) => {
 });
 
 // Rating nach city
-
+router.get('/city/:city', async(req, res) => {
+    try {
+        // Input aufbereiten und in db suchen
+        const cityRatings = await dbSchema.find({ city: req.params.city.toLowerCase() });
+        res.json(cityRatings);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine Ratings verfügbar")
+    }
+});
 
 
 
@@ -71,7 +127,7 @@ router.get('/country/:country', async(req, res) => {
 router.post('/add', async (req, res) => {
     try {
         const newRating = new dbSchema({
-            // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zuLássig category eingefügt hat
+            // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zulässig category eingefügt hat
             category: req.body.category,
             rating: req.body.rating,
             title: req.body.title,
