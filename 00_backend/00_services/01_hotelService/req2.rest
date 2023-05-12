@@ -5,7 +5,7 @@ GET http://localhost:3001/all
 GET http://localhost:3001/id/645e8485ccb07269fece931a
 
 ### Hotels nach price_category
-GET http://localhost:3001/price_category/teuer
+GET http://localhost:3001/price_category/günstig
 
 ### Hotels nach beds
 GET http://localhost:3001/beds/10
@@ -14,7 +14,7 @@ GET http://localhost:3001/beds/10
 GET http://localhost:3001/title/hotel
 
 ### Hotels nach description
-GET http://localhost:3001/description/unvergesslich
+GET http://localhost:3001/description/luxuriös
 
 ### Hotels nach country
 GET http://localhost:3001/country/spain
