@@ -145,7 +145,7 @@ router.post('/add', async (req, res) => {
 
 
 
-// PUT-METHODS
+// PUT-METHOD
 router.put('/:id', checkRating, async(req, res) => {
     try {
         res.rating.category = req.body.category;
@@ -166,9 +166,17 @@ router.put('/:id', checkRating, async(req, res) => {
 
 
 // PATCH-METHODS
-
+// Eventuell später
 
 
 // DELETE-METHODS
+router.delete('/:id', checkRating, async(req, res) => {
+    try {
+        await dbSchema.deleteOne(res.rating);
+        res.status(200).json({ "message": "Eintrag gelöscht" });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 
+})
 module.exports = router;

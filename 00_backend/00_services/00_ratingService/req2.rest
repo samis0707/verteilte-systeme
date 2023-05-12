@@ -50,3 +50,15 @@ Content-Type: application/json
     "country": "germany",
     "city": "Karlsruhe"
 }
+
+###
+PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+Content-Type: application/json
+
+{
+     "rating": 2
+}
+
+
+###
+DELETE http://localhost:3000/645e6e3c3bfb288684990525
