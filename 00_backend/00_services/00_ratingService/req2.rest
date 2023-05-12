@@ -5,7 +5,7 @@ GET http://localhost:3000/all
 GET http://localhost:3000/country/germany
 
 ### Ratings nach ID
-GET http://localhost:3000/id/645ca551c269e672c31c4e78
+GET http://localhost:3000/id/645e61178b8c02e9fabb62ee
 
 ### Rating hinzufügen
 POST http://localhost:3000/add 

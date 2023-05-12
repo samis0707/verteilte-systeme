@@ -30,10 +30,10 @@ async function checkRating(req, res, next) {
 // Alle Ratings ausgeben lassen
 router.get('/all', async(req, res) => {
     try{
-        const allRatings = dbSchema.find();
+        const allRatings = await dbSchema.find();
         res.json(allRatings);
     } catch(err) {
-        res.json({ message1: "Keine Ratings verfügbar"})
+        res.json({ message: "Keine Ratings verfügbar"})
         console.log("Keine Ratings verfügbar")
     }
 })
