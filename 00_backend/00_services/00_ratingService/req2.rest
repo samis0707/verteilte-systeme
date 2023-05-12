@@ -1,21 +1,38 @@
 ### alle Ratings
 GET http://localhost:3000/all
 
-### Ratings nach Land
-GET http://localhost:3000/country/Germany
-
 ### Ratings nach ID
 GET http://localhost:3000/id/645e61178b8c02e9fabb62ee
+
+### Ratings nach category
+GET http://localhost:3000/category/City
+
+### Ratings nach rating
+GET http://localhost:3000/rating/4
+
+### Ratings nach title
+GET http://localhost:3000/title/stadt
+
+### Ratings nach description
+GET http://localhost:3000/description/Wenig
+
+### Ratings nach country
+GET http://localhost:3000/country/Germany
+
+### Ratings nach city
+GET http://localhost:3000/city/Stuttgart
+
+
 
 ### Rating hinzufügen
 POST http://localhost:3000/add 
 Content-Type: application/json
 
 {
-    "category": "City",
+    "category": "city",
     "rating": 4,
     "title": "Stadt Stuttgart",
-    "description": "Schöne Stadt, man kann viel machen",
+    "description": "Schöne Stadt, man kann wenig machen",
     "country": "germany",
     "city": "stuttgart"
 }

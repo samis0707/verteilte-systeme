@@ -29,6 +29,6 @@ Parameters:
 ---
 
 Zusätzliche Features:
-- Input Handling
+- Input Validation -> category
 - wildcard suche -> bei beschreibung
 - 

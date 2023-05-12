@@ -7,6 +7,8 @@ const router = express.Router();
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
 
+
+
 // MIDDLEWARE
 // checkRating Middleware
 async function checkRating(req, res, next) {
@@ -26,8 +28,9 @@ async function checkRating(req, res, next) {
     next();
 };
 
-// GET-METHODS
 
+
+// GET-METHODS
 // Alle Ratings ausgeben lassen
 router.get('/all', async(req, res) => {
     try{
@@ -61,8 +64,8 @@ router.get('/category/:category', async(req, res) => {
 router.get('/rating/:rating', async (req, res) => {
     try {
         // in nummer umwandeln und checken ob zwischen 1 und 10
-        const rating = parseInt(req.params.rating);
-        if (isNaN(rating) || rating >= 1 || rating <= 10) {
+        const rating = parseInt(req.params.rating)
+        if (isNaN(rating) || rating < 1 || rating > 10) {
             return res.status(400).json({ error: 'Rating muss Zahl zwischen 1 und 10 sein' });
         }
         const ratingRatings = await dbSchema.find({ rating });
@@ -76,7 +79,8 @@ router.get('/rating/:rating', async (req, res) => {
 // Rating nach title
 router.get('/title/:title', async(req, res) => {
     try {
-        const titleRatings = await dbSchema.find({ title: req.params.title });
+        // mit regex und options reichen auch teile des titels und gross kleinschreibung ist unwichtig
+        const titleRatings = await dbSchema.find({ title: {$regex:req.params.title, $options: "i" } });
         res.json(titleRatings);
     } catch(err) {
         res.json({ message: err.message });
@@ -87,7 +91,7 @@ router.get('/title/:title', async(req, res) => {
 // Rating nach description
 router.get('/description/:description', async(req, res) => {
     try {
-        const descriptionRatings = await dbSchema.find({ description: req.params.description });
+        const descriptionRatings = await dbSchema.find({ description: {$regex:req.params.description, $options: "i" } });
         res.json(descriptionRatings);
     } catch(err) {
         res.json({ message: err.message });
@@ -98,8 +102,7 @@ router.get('/description/:description', async(req, res) => {
 // Rating nach country
 router.get('/country/:country', async(req, res) => {
     try {
-        // Input aufbereiten und in db suchen
-        const countryRatings = await dbSchema.find({ country: req.params.country.toLowerCase() });
+        const countryRatings = await dbSchema.find({ country: {$regex:req.params.country, $options: "i" } });
         res.json(countryRatings);
     } catch(err) {
         res.json({ message: err.message });
@@ -110,16 +113,13 @@ router.get('/country/:country', async(req, res) => {
 // Rating nach city
 router.get('/city/:city', async(req, res) => {
     try {
-        // Input aufbereiten und in db suchen
-        const cityRatings = await dbSchema.find({ city: req.params.city.toLowerCase() });
+        const cityRatings = await dbSchema.find({ city: {$regex:req.params.city, $options: "i" } });
         res.json(cityRatings);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine Ratings verfügbar")
     }
 });
-
-
 
 
 
