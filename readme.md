@@ -9,7 +9,7 @@ Frontend:
 - javaScript
 - CSS
 - HTML
-- *Eventuell Reveal.JS?* 
+- *Eventuell React.JS?* 
 --> BootStrap
 
 Backend:
