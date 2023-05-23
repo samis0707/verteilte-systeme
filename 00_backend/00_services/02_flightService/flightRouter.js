@@ -17,7 +17,7 @@ async function checkFlight(req, res, next) {
         console.log("middleware fragt nach id..")
         flight = await dbSchema.findById(req.params.id);
         if (flight == null) {
-            return res.status(404).json({ message: 'flight nicht verfügbar'});
+            return res.status(404).json({ message: 'Flug nicht verfügbar'});
         }
     } catch (err) {
         console.log("Hängt in der middleWare fest")
@@ -47,93 +47,122 @@ router.get('/id/:id', checkFlight, (req, res) => {
     res.json(res.flight);
 });
 
-// flight nach price_category 
-router.get('/price_category/:price_category', async(req, res) => {
-    // hier muss noch abfrage nach array input [günstig, ok, teuer]
+// flight nach pricePerSeat
+router.get('/pricePerSeat/:pricePerSeat', async(req, res) => {
     try {
         // Input aufbereiten und in db suchen
-        const price_categoryFlights = await dbSchema.find({ price_category: req.params.price_category.toLowerCase() });
-        res.json(price_categoryFlights);
+        const pricePerSeatFlights = await dbSchema.find({ pricePerSeat });
+        res.json(pricePerSeatFlights);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
 });
 
-// flight nach beds
-router.get('/beds/:beds', async (req, res) => {
+// flight nach start
+router.get('/start/:start', async (req, res) => {
     try {
-        // in nummer umwandeln und checken ob zwischen 1 und 5
-        const beds = parseInt(req.params.beds)
-        if (isNaN(beds) || beds < 1 || beds > 6) {
-            return res.status(400).json({ error: 'Anzahl der Betten muss zwischen 1 und 5 liegen' });
-        }
-        const bedsFlight = await dbSchema.find({ beds });
-        res.json(bedsFlight);
+        // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
+        const startFlights = await dbSchema.find({ start });
+        res.json(startFlights);
     } catch (err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
   });
 
-// flight nach title
-router.get('/title/:title', async(req, res) => {
+// flight nach destination
+router.get('/destination/:destination', async (req, res) => {
     try {
-        // mit regex und options reichen auch teile des titels und gross kleinschreibung ist unwichtig
-        const titleFlights = await dbSchema.find({ title: {$regex:req.params.title, $options: "i" } });
-        res.json(titleFlights);
+        // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
+        const destinationFlights = await dbSchema.find({ destination });
+        res.json(destinationFlights);
+    } catch (err) {
+        res.json({ message: err.message });
+        console.log("Keine flights verfügbar")
+    }
+  });
+
+// flight nach flightTime
+router.get('/flightTime/:flightTime', async (req, res) => {
+    try {
+        // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
+        const flightTimeFlights = await dbSchema.find({ flightTime });
+        res.json(flightTimeFlights);
+    } catch (err) {
+        res.json({ message: err.message });
+        console.log("Keine flights verfügbar")
+    }
+  });
+
+// flight nach flightClass
+router.get('/flightClass/:flightClass', async(req, res) => {
+    try {
+        const flightClassFlights = await dbSchema.find({ flightClass });
+        res.json(flightClassFlights);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
 });
 
-// flight nach description
-router.get('/description/:description', async(req, res) => {
+// flight nach departureTime
+router.get('/departureTime/:departureTime', async(req, res) => {
     try {
-        const descriptionFlights = await dbSchema.find({ description: {$regex:req.params.description, $options: "i" } });
-        res.json(descriptionFlights);
+        const departureTimeFlights = await dbSchema.find({ departureTime });
+        res.json(departureTimeFlights);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
 });
 
-// flight nach country
-router.get('/country/:country', async(req, res) => {
+// flight nach departureDate
+router.get('/departureDate/:departureDate', async(req, res) => {
     try {
-        const countryFlights = await dbSchema.find({ country: {$regex:req.params.country, $options: "i" } });
-        res.json(countryFlights);
+        const departureDateFlights = await dbSchema.find({ departureDate });
+        res.json(departureDateFlights);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
 });
 
-// flight nach city
-router.get('/city/:city', async(req, res) => {
+// flight nach arrivalTime
+router.get('/arrivalTime/:arrivalTime', async(req, res) => {
     try {
-        const cityFlights = await dbSchema.find({ city: {$regex:req.params.city, $options: "i" } });
-        res.json(cityFlights);
+        const arrivalTimeFlights = await dbSchema.find({ arrivalTime });
+        res.json(arrivalTimeFlights);
     } catch(err) {
         res.json({ message: err.message });
         console.log("Keine flights verfügbar")
     }
 });
-
-
+// flight nach arrivalDate
+router.get('/arrivalDate/:arrivalDate', async(req, res) => {
+    try {
+        const arrivalDateFlights = await dbSchema.find({ arrivalDate });
+        res.json(arrivalDateFlights);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine flights verfügbar")
+    }
+});
 
 // POST-METHOD
 router.post('/add', async (req, res) => {
     try {
         const newFlight = new dbSchema({
             // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zulässig category eingefügt hat
-            price_category: req.body.price_category,
-            beds: req.body.beds,
-            title: req.body.title,
-            description:  req.body.description,
-            country: req.body.country,
-            city: req.body.city,
+            pricePerSeat: req.body.pricePerSeat,
+            start: req.body.start,
+            destination: req.body.destination,
+            flightTime:  req.body.flightTime,
+            flightClass: req.body.flightClass,
+            departureTime: req.body.departureTime,
+            departureDate: req.body.departureDate,
+            arrivalTime: req.body.arrivalTime,
+            arrivalDate: req.body.arrivalDate
             // Timestamp automatisch einfügen
             // created_from: req.body.created_from
         })
@@ -148,8 +177,8 @@ router.post('/add', async (req, res) => {
 // PUT-METHOD
 router.put('/:id', checkFlight, async(req, res) => {
     try {
-        res.flight.price_category = req.body.price_category;
-        res.flight.beds = req.body.beds;
+        res.flight.price_per_seat = req.body.price_per_seat;
+        res.flight.start = req.body.start;
         res.flight.title = req.body.title;
         res.flight.description = req.body.description;
         res.flight.country = req.body.country;

@@ -1,8 +1,8 @@
 ### alle Ratings
-GET http://localhost:3000/all
+GET http://localhost:3002/all
 
 ### Ratings nach ID
-GET http://localhost:3000/id/645e61178b8c02e9fabb62ee
+GET http://localhost:3002/id/646cfc28559fda211fad45ca
 
 ### Ratings nach category
 GET http://localhost:3000/category/City
@@ -25,30 +25,36 @@ GET http://localhost:3000/city/Stuttgart
 
 
 ### Rating hinzufügen
-POST http://localhost:3000/add 
+POST http://localhost:3002/add 
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 4,
-    "title": "Stadt Stuttgart",
-    "description": "Schöne Stadt, man kann wenig machen",
-    "country": "germany",
-    "city": "stuttgart"
+    "pricePerSeat": 499,
+    "start": "FRA",
+    "destination": "YYZ",
+    "flightTime": 5,
+    "flightClass": "economy",
+    "departureTime": "16848639601",
+    "departureDate": "1684863960",
+    "arrivalTime": "1684863960",
+    "arrivalDate": "1684863960"
 }
 
 
 ###
-PUT http://localhost:3000/645e6e3c3bfb288684990525
+PUT http://localhost:3002/646cfc28559fda211fad45ca
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 7,
-    "title": "Karlsruhe",
-    "description": "Bombe man!",
-    "country": "germany",
-    "city": "Karlsruhe"
+    "pricePerSeat": 499,
+    "start": "SLA",
+    "destination": "YYZ",
+    "flightTime": 5,
+    "flightClass": "economy",
+    "departureTime": "16848639601",
+    "departureDate": "1684863960",
+    "arrivalTime": "1684863960",
+    "arrivalDate": "1684863960"
 }
 
 ###

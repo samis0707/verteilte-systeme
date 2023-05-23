@@ -29,6 +29,7 @@ POST http://localhost:3001/add
 Content-Type: application/json
 
 {
+    "price": 599,
     "price_category": "günstig",
     "beds": 4,
     "title": "Grand Budapest Hotel",

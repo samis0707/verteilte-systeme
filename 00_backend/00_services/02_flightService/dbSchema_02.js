@@ -4,30 +4,42 @@ const mongoose = require('mongoose');
 // Musterschema für ein Rating das in der Datenbanbk abgelegt wird
 const hotelMusterSchema = new mongoose.Schema({
 
-    price_category: {
-        type: String,
-        required: true
-    },
-    beds: {
+    pricePerSeat: {
         type: Number,
         required: true
     },
-    title: {
+    start: {
         type: String,
         required: true
     },
-    description: {
+    destination: {
         type: String,
         required: true
     },
-    country: {
+    flightTime: {
+        type: Number,
+        required: true
+    },
+    flightClass: {
         type: String,
         required: true
     },
-    city: {
-        type: String,
-        required: false
+    departureTime: {
+        type: Number,
+        required: true
     },
+    departureDate: {
+        type: Number,
+        required: true
+    },
+    arrivalTime: {
+        type: Number,
+        required: true
+    },
+    arrivalDate: {
+        type: Number,
+        required: true
+    }
     /*created_from: {
         type: Date,
         required: true

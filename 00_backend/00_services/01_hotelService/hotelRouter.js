@@ -47,6 +47,18 @@ router.get('/id/:id', checkHotel, (req, res) => {
     res.json(res.hotel);
 });
 
+// Hotel nach price
+router.get('/price/:price', async(req, res) => {
+    try {
+        // Input aufbereiten und in db suchen
+        const priceHotels = await dbSchema.find({ price: req.params.price.toLowerCase() });
+        res.json(priceHotels);
+    } catch(err) {
+        res.json({ message: err.message });
+        console.log("Keine Hotels verfügbar")
+    }
+});
+
 // Hotel nach price_category 
 router.get('/price_category/:price_category', async(req, res) => {
     // hier muss noch abfrage nach array input [günstig, ok, teuer]
@@ -128,6 +140,7 @@ router.post('/add', async (req, res) => {
     try {
         const newHotel = new dbSchema({
             // INPUT-HANDLING: Hier muss eigentlich gecheckt werden ob man eine zulässig category eingefügt hat
+            price: req.body.price,
             price_category: req.body.price_category,
             beds: req.body.beds,
             title: req.body.title,
@@ -148,6 +161,7 @@ router.post('/add', async (req, res) => {
 // PUT-METHOD
 router.put('/:id', checkHotel, async(req, res) => {
     try {
+        res.hotel.price = req.body.price;
         res.hotel.price_category = req.body.price_category;
         res.hotel.beds = req.body.beds;
         res.hotel.title = req.body.title;
