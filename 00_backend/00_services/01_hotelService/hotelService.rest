@@ -8,13 +8,13 @@ GET http://localhost:3001/id/645e8485ccb07269fece931a
 GET http://localhost:3001/price_category/günstig
 
 ### Hotels nach beds
-GET http://localhost:3001/beds/10
+GET http://localhost:3001/beds/2
 
 ### Hotels nach title
 GET http://localhost:3001/title/hotel
 
 ### Hotels nach description
-GET http://localhost:3001/description/luxuriös
+GET http://localhost:3001/description/pleb
 
 ### Hotels nach country
 GET http://localhost:3001/country/spain
@@ -34,7 +34,7 @@ Content-Type: application/json
     "beds": 4,
     "title": "Grand Budapest Hotel",
     "description": "Ich hatte das Vergnügen, im Grand Budapest Hotel zu übernachten und ich kann sagen, dass es ein unvergessliches Erlebnis war. Das Hotel ist sehr luxuriös und stilvoll eingerichtet und es ist leicht zu erkennen, dass hier viel Liebe zum Detail steckt.",
-    "country": "spain",
+    "country": "germany",
     "city": "barcelona"
 }
 
@@ -44,6 +44,7 @@ PUT http://localhost:3001/645e8485ccb07269fece931a
 Content-Type: application/json
 
 {
+    "price": 599,
     "price_category": "teuer",
     "beds": 5,
     "title": "Grand Budapest Hotel",

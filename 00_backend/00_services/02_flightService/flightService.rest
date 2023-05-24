@@ -11,37 +11,40 @@ GET http://localhost:3002/pricePerSeat/499
 GET http://localhost:3002/start/FRA
 
 ### Ratings nach destination
-GET http://localhost:3002/destination/YZZ
+GET http://localhost:3002/destination/YYZ
 
 ### Ratings nach flightTime
 GET http://localhost:3002/flightTime/5
 
 ### Ratings nach flightClass
-GET http://localhost:3002/flightClass/business
+GET http://localhost:3002/flightClass/economy
 
 ### Ratings nach departureTime
 GET http://localhost:3002/departureTime/16848639601
 
 ### Ratings nach departureDate
-GET http://localhost:3002/departureDate/16848639601
+GET http://localhost:3002/departureDate/1684863960
 
 ### Ratings nach arrivalTime
-GET http://localhost:3002/arrivalTime/16848639601
+GET http://localhost:3002/arrivalTime/1684863960
 
 ### Ratings nach arrivalDate
-GET http://localhost:3002/arrivalDate/16848639601
+GET http://localhost:3002/arrivalDate/1684863960
 
 ### Rating hinzufügen
 POST http://localhost:3002/add 
 Content-Type: application/json
 
 {
-    "pricePerDay": 144,
-    "brand": "FRA",
-    "model": "YYZ",
-    "releaseDate": 5,
-    "doorQuant": "economy",
-    "seats": "16848639601"
+    "pricePerSeat": 499,
+    "start": "SLA",
+    "destination": "YYZ",
+    "flightTime": 5,
+    "flightClass": "economy",
+    "departureTime": "16848639601",
+    "departureDate": "1684863960",
+    "arrivalTime": "1684863960",
+    "arrivalDate": "1684863960"
 }
 
 
@@ -71,4 +74,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/645e6e3c3bfb288684990525
+DELETE http://localhost:3002/646cfc28559fda211fad45ca

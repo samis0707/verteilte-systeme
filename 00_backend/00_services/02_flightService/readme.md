@@ -4,17 +4,20 @@
   - `/all` gibt alle flights zurück
   Parameters:
   - `/id/:id` gibt das flight mit einer bestimmten Datenbank-ID zurück
-  - `/category/:category` gibt flights nach einer Kategorie zurück (muss noch definieren welche) 
+  - `/priceperseat/:priceperseat` gibt preis eines platzes von Flug zurück
+  - `/start/:start` gibt den Starpunkt eines flights zurück
   - `/destination/:destination` gibt flights mit einer bestimmten destination (Flughafen) zurück
-  - `/departure/:departure` gibt flights mit einem bestimmten titel zurück
-  - `/price/:seat_category` gibt Preise zu flights nach bestimmter Sitz Kategorie zurück (Economy, Business Class) (**Hier fehlt noch der Identifier**) eventuell id#seat_category als param
-  - `/airline/:airline` gibt flights einer bestimmten airline zurück
+  - `/flightClass/:flightClass` gibt die Sitzklasse eines platzes eines flights zurück
+  - `/departureTime/:departureTime` gibt flights mit einem bestimmten abflugzeitpuntk zurück
+  - `/departureDate/:departureDate` gibt flights mit einem bestimmten abflugsdatum zurück
+  - `/arrivalTime/:arrivalTime` gibt flights mit einem bestimmten ankunftszeitpunkt zurück
+  - `/arrivalDate/:arrivalDate` gibt flights mit einem bestimmten ankunftsdatumzurück
 ---
 - POST:
-    - `/add` erwartet ein JSON mit {id, category, destination, departure, price, airline}
+    - `/add` erwartet ein JSON mit {priceperseat, start, destination, flightClass, departureTime, departureDate, arrivalTime, arrivalDate}
 ---
 - PUT:
-  - `/:id` {id, category, destination, departure, price, airline}
+  - `/:id` {priceperseat, start, destination, flightClass, departureTime, departureDate, arrivalTime, arrivalDate}
 ---
 - PATCH:
 ---

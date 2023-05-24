@@ -13,10 +13,10 @@
   - `/city/:city` gibt hotels einer bestimmten Stadt zurück
 ---
 - POST:
-    - `/add` erwartet ein JSON mit {price_category, beds, title, description, country, city}
+    - `/add` erwartet ein JSON mit {price, price_category, beds, title, description, country, city}
 ---
 - PUT:
-  - `/:id` {price_category, beds, title, description, country, city}
+  - `/:id`{price, price_category, beds, title, description, country, city}
 ---
 - PATCH:
 ---
