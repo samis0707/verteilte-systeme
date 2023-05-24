@@ -48,10 +48,10 @@ router.get('/id/:id', checkCRental, (req, res) => {
 });
 
 // cRentals nach pricePerDay
-router.get('/pricePerDay/:pricePerDay', async(req, res) => {
+router.get('/priceperday/:priceperday', async(req, res) => {
     try {
         // Input aufbereiten und in db suchen
-        const pricePerDayCRentals = await dbSchema.find({ pricePerDay: req.params.pricePerDay });
+        const pricePerDayCRentals = await dbSchema.find({ pricePerDay: req.params.priceperday });
         res.json(pricePerDayCRentals);
     } catch(err) {
         res.json({ message: err.message });
@@ -63,7 +63,7 @@ router.get('/pricePerDay/:pricePerDay', async(req, res) => {
 router.get('/brand/:brand', async (req, res) => {
     try {
         // heir ein paar brands zu auswahl
-        const brandCRentals = await dbSchema.find({ brand: req.params.brand });
+        const brandCRentals = await dbSchema.find({ brand: {$regex:req.params.brand, $options: "i" } });
         res.json(brandCRentals);
     } catch (err) {
         res.json({ message: err.message });
@@ -75,7 +75,7 @@ router.get('/brand/:brand', async (req, res) => {
 router.get('/model/:model', async (req, res) => {
     try {
         // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
-        const modelCRentals = await dbSchema.find({ model: req.params.model });
+        const modelCRentals = await dbSchema.find({ model: {$regex:req.params.model, $options: "i" } });
         res.json(modelCRentals);
     } catch (err) {
         res.json({ message: err.message });
@@ -84,10 +84,10 @@ router.get('/model/:model', async (req, res) => {
   });
 
 // cRental nach releaseDate
-router.get('/releaseDate/:releaseDate', async (req, res) => {
+router.get('/releasedate/:releasedate', async (req, res) => {
     try {
         // hier muss eine Uhrzeit rein unixtimestamp
-        const releaseDateCRental = await dbSchema.find({ releaseDate: req.params.releaseDate });
+        const releaseDateCRental = await dbSchema.find({ releaseDate: req.params.releasedate });
         res.json(releaseDateCRental);
     } catch (err) {
         res.json({ message: err.message });
@@ -96,10 +96,10 @@ router.get('/releaseDate/:releaseDate', async (req, res) => {
   });
 
 // cRental nach doorQuant
-router.get('/doorQuant/:doorQuant', async(req, res) => {
+router.get('/doorquant/:doorquant', async(req, res) => {
     try {
         // Input handling bei put: [economy, business]
-        const doorQuantCRentals = await dbSchema.find({ doorQuant: req.params.doorQuant });
+        const doorQuantCRentals = await dbSchema.find({ doorQuant: req.params.doorquant });
         res.json(doorQuantCRentals);
     } catch(err) {
         res.json({ message: err.message });

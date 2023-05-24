@@ -2,25 +2,25 @@
 GET http://localhost:3003/all
 
 ### Ratings nach ID
-GET http://localhost:3003/id/646cfc28559fda211fad45ca
+GET http://localhost:3003/id/646e804307dcdbeb3e289e7e
 
 ### Ratings nach pricePerDay
-GET http://localhost:3003/pricePerDay/90
+GET http://localhost:3003/priceperday/90
 
 ### Ratings nach brand
-GET http://localhost:3003/brand/TOYOTA
+GET http://localhost:3003/brand/toy
 
 ### Ratings nach model
-GET http://localhost:3003/model/YARIS
+GET http://localhost:3003/model/ya
 
 ### Ratings nach releaseDate
-GET http://localhost:3003/releaseDate/1684970602
+GET http://localhost:3003/releaseDate/1684970603
 
 ### Ratings nach doorQuant
 GET http://localhost:3003/doorQuant/5
 
 ### Ratings nach seats
-GET http://localhost:3003/seats/7
+GET http://localhost:3003/seats/3
 
 ### Rating hinzufügen
 POST http://localhost:3003/add 
@@ -41,9 +41,9 @@ PUT http://localhost:3003/646e804307dcdbeb3e289e7e
 Content-Type: application/json
 
 {
-    "pricePerDay": 90,
-    "brand": "TOYOTA",
-    "model": "SUPRA",
+    "pricePerDay": 100,
+    "brand": "VW",
+    "model": "GOLF",
     "releaseDate": 1684970603,
     "doorQuant": 5,
     "seats": 7
@@ -59,4 +59,4 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/645e6e3c3bfb288684990525
+DELETE http://localhost:3003/646e93876e6c3a9d361d1777
