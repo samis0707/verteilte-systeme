@@ -51,7 +51,7 @@ router.get('/id/:id', checkFlight, (req, res) => {
 router.get('/pricePerSeat/:pricePerSeat', async(req, res) => {
     try {
         // Input aufbereiten und in db suchen
-        const pricePerSeatFlights = await dbSchema.find({ pricePerSeat });
+        const pricePerSeatFlights = await dbSchema.find({ pricePerSeat: req.params.pricePerSeat });
         res.json(pricePerSeatFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -63,7 +63,7 @@ router.get('/pricePerSeat/:pricePerSeat', async(req, res) => {
 router.get('/start/:start', async (req, res) => {
     try {
         // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
-        const startFlights = await dbSchema.find({ start });
+        const startFlights = await dbSchema.find({ start: req.params.start });
         res.json(startFlights);
     } catch (err) {
         res.json({ message: err.message });
@@ -75,7 +75,7 @@ router.get('/start/:start', async (req, res) => {
 router.get('/destination/:destination', async (req, res) => {
     try {
         // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
-        const destinationFlights = await dbSchema.find({ destination });
+        const destinationFlights = await dbSchema.find({ destination: req.params.destination });
         res.json(destinationFlights);
     } catch (err) {
         res.json({ message: err.message });
@@ -87,7 +87,7 @@ router.get('/destination/:destination', async (req, res) => {
 router.get('/flightTime/:flightTime', async (req, res) => {
     try {
         // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
-        const flightTimeFlights = await dbSchema.find({ flightTime });
+        const flightTimeFlights = await dbSchema.find({ flightTime: req.params.flightTime });
         res.json(flightTimeFlights);
     } catch (err) {
         res.json({ message: err.message });
@@ -98,7 +98,7 @@ router.get('/flightTime/:flightTime', async (req, res) => {
 // flight nach flightClass
 router.get('/flightClass/:flightClass', async(req, res) => {
     try {
-        const flightClassFlights = await dbSchema.find({ flightClass });
+        const flightClassFlights = await dbSchema.find({ flightClass: req.params.flightClass });
         res.json(flightClassFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -109,7 +109,7 @@ router.get('/flightClass/:flightClass', async(req, res) => {
 // flight nach departureTime
 router.get('/departureTime/:departureTime', async(req, res) => {
     try {
-        const departureTimeFlights = await dbSchema.find({ departureTime });
+        const departureTimeFlights = await dbSchema.find({ departureTime: req.params.departureTime });
         res.json(departureTimeFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -120,7 +120,7 @@ router.get('/departureTime/:departureTime', async(req, res) => {
 // flight nach departureDate
 router.get('/departureDate/:departureDate', async(req, res) => {
     try {
-        const departureDateFlights = await dbSchema.find({ departureDate });
+        const departureDateFlights = await dbSchema.find({ departureDate: req.params.departureDate });
         res.json(departureDateFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -131,7 +131,7 @@ router.get('/departureDate/:departureDate', async(req, res) => {
 // flight nach arrivalTime
 router.get('/arrivalTime/:arrivalTime', async(req, res) => {
     try {
-        const arrivalTimeFlights = await dbSchema.find({ arrivalTime });
+        const arrivalTimeFlights = await dbSchema.find({ arrivalTime: req.params.arrivalTime });
         res.json(arrivalTimeFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -141,7 +141,7 @@ router.get('/arrivalTime/:arrivalTime', async(req, res) => {
 // flight nach arrivalDate
 router.get('/arrivalDate/:arrivalDate', async(req, res) => {
     try {
-        const arrivalDateFlights = await dbSchema.find({ arrivalDate });
+        const arrivalDateFlights = await dbSchema.find({ arrivalDate: req.params.arrivalDate });
         res.json(arrivalDateFlights);
     } catch(err) {
         res.json({ message: err.message });
@@ -166,7 +166,7 @@ router.post('/add', async (req, res) => {
             // Timestamp automatisch einfügen
             // created_from: req.body.created_from
         })
-        newFlight.insert({date: ISODate()})
+        // newFlight.insert({date: new Date()})
         res.status(201).json(await newFlight.save());
     } catch (err) {
         res.status(400).json({message: err.message});
