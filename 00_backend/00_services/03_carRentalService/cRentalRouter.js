@@ -17,7 +17,7 @@ async function checkCRental(req, res, next) {
         console.log("middleware fragt nach id..")
         cRental = await dbSchema.findById(req.params.id);
         if (cRental == null) {
-            return res.status(404).json({ message: 'Flug nicht verfügbar'});
+            return res.status(404).json({ message: "Keine car rentals verfügbar"});
         }
     } catch (err) {
         console.log("Hängt in der middleWare fest")
@@ -128,7 +128,6 @@ router.post('/add', async (req, res) => {
             brand: req.body.brand,
             model: req.body.model,
             releaseDate:  req.body.releaseDate,
-            flightClass: req.body.flightClass,
             doorQuant: req.body.doorQuant,
             seats: req.body.seats,
             // Timestamp automatisch einfügen
@@ -145,15 +144,15 @@ router.post('/add', async (req, res) => {
 // PUT-METHOD
 router.put('/:id', checkCRental, async(req, res) => {
     try {
-        res.flight.price_per_seat = req.body.price_per_seat;
-        res.flight.start = req.body.start;
-        res.flight.title = req.body.title;
-        res.flight.description = req.body.description;
-        res.flight.country = req.body.country;
-        res.flight.city = req.body.city;
+        res.cRental.pricePerDay = req.body.pricePerDay;
+        res.cRental.brand = req.body.brand;
+        res.cRental.model = req.body.model;
+        res.cRental.releaseDate = req.body.releaseDate;
+        res.cRental.doorQuant = req.body.doorQuant;
+        res.cRental.seats = req.body.seats;
 
-        const updatedflight = await res.flight.save();
-        res.status(201).json(updatedflight);
+        const updatedcRental = await res.cRental.save();
+        res.status(201).json(updatedcRental);
 
     } catch (err) { 
         res.status(400).json({ message: err.message });
@@ -169,7 +168,7 @@ router.put('/:id', checkCRental, async(req, res) => {
 // DELETE-METHODS
 router.delete('/:id', checkCRental, async(req, res) => {
     try {
-        await dbSchema.deleteOne(res.flight);
+        await dbSchema.deleteOne(res.cRental);
         res.status(200).json({ "message": "Eintrag gelöscht" });
     } catch (err) {
         res.status(500).json({ message: err.message });

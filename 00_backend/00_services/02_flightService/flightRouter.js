@@ -178,7 +178,7 @@ router.post('/add', async (req, res) => {
 // PUT-METHOD
 router.put('/:id', checkFlight, async(req, res) => {
     try {
-        res.flight.price_per_seat = req.body.price_per_seat;
+        res.flight.pricePerSeat = req.body.pricePerSeat;
         res.flight.start = req.body.start;
         res.flight.title = req.body.title;
         res.flight.description = req.body.description;
