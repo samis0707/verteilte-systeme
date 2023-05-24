@@ -4,6 +4,7 @@
   - `/all` gibt alle hotels zurück
   Parameters:
   - `/id/:id` gibt das hotel mit einer bestimmten Datenbank-ID zurück
+  - `/price/:price` Gibt Preis pro Nacht eines Hotels zurück
   - `/price_category/:price_category` (Erlaubte Inputs: günstig, ok, teuer) gibt hotels nach einer Kategorie zurück
   - `/beds/:beds` gibt hotels mit einer bestimmten anzahl an betten zurück
   - `/title/:title` gibt hotels mit einem bestimmten titel zurück
