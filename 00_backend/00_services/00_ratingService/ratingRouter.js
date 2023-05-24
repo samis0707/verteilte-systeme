@@ -52,7 +52,7 @@ router.get('/category/:category', async(req, res) => {
     // hier muss noch abfrage nach array input [country, city, activity, carrental, restaurant]
     try {
         // Input aufbereiten und in db suchen
-        const categoryRatings = await dbSchema.find({ category: req.params.category.toLowerCase() });
+        const categoryRatings = await dbSchema.find({ category: req.params.category });
         res.json(categoryRatings);
     } catch(err) {
         res.json({ message: err.message });

@@ -27,4 +27,4 @@ Zusätzliche Features:
 - Input Validation -> category
 - wildcard suche -> bei beschreibung
 
-**Als kategorie noch hotels hinzufügen**
+**Als Kategorie noch hotels hinzufügen**
