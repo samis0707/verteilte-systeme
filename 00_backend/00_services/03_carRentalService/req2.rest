@@ -1,0 +1,67 @@
+### alle Ratings
+GET http://localhost:3002/all
+
+### Ratings nach ID
+GET http://localhost:3002/id/646cfc28559fda211fad45ca
+
+### Ratings nach category
+GET http://localhost:3000/category/City
+
+### Ratings nach rating
+GET http://localhost:3000/rating/4
+
+### Ratings nach title
+GET http://localhost:3000/title/stadt
+
+### Ratings nach description
+GET http://localhost:3000/description/Wenig
+
+### Ratings nach country
+GET http://localhost:3000/country/Germany
+
+### Ratings nach city
+GET http://localhost:3000/city/Stuttgart
+
+
+
+### Rating hinzufügen
+POST http://localhost:3003/add 
+Content-Type: application/json
+
+{
+    "pricePerDay": 90,
+    "brand": "TOYOTA",
+    "model": "YARIS",
+    "releaseDate": 1684970603,
+    "doorQuant": "5",
+    "seats": "7"
+}
+
+
+###
+PUT http://localhost:3002/646cfc28559fda211fad45ca
+Content-Type: application/json
+
+{
+    "pricePerSeat": 499,
+    "start": "SLA",
+    "destination": "YYZ",
+    "flightTime": 5,
+    "flightClass": "economy",
+    "departureTime": "16848639601",
+    "departureDate": "1684863960",
+    "arrivalTime": "1684863960",
+    "arrivalDate": "1684863960"
+}
+
+###
+PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+Content-Type: application/json
+
+{
+     "rating": 2
+}
+
+
+###
+DELETE http://localhost:3000/645e6e3c3bfb288684990525

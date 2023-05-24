@@ -166,6 +166,7 @@ router.post('/add', async (req, res) => {
             // Timestamp automatisch einfügen
             // created_from: req.body.created_from
         })
+        newFlight.insert({date: ISODate()})
         res.status(201).json(await newFlight.save());
     } catch (err) {
         res.status(400).json({message: err.message});

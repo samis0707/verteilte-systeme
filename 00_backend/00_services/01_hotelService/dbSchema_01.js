@@ -1,7 +1,6 @@
 //Mongoose
 const mongoose = require('mongoose');
 
-// Musterschema für ein Rating das in der Datenbanbk abgelegt wird
 const hotelMusterSchema = new mongoose.Schema({
 
     price: {
