@@ -1,5 +1,5 @@
 ### alle Ratings
-GET http://localhost:3002/all
+GET http://localhost:3003/all
 
 ### Ratings nach ID
 GET http://localhost:3002/id/646cfc28559fda211fad45ca
@@ -11,13 +11,13 @@ GET http://localhost:3000/category/City
 GET http://localhost:3000/rating/4
 
 ### Ratings nach title
-GET http://localhost:3000/title/stadt
+GET http://localhost:3003/releasedate/1684970603
 
 ### Ratings nach description
 GET http://localhost:3000/description/Wenig
 
 ### Ratings nach country
-GET http://localhost:3000/country/Germany
+GET http://localhost:3003/seats/7
 
 ### Ratings nach city
 GET http://localhost:3000/city/Stuttgart

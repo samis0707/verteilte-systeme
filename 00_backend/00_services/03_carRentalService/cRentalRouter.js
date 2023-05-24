@@ -51,7 +51,7 @@ router.get('/id/:id', checkCRental, (req, res) => {
 router.get('/pricePerDay/:pricePerDay', async(req, res) => {
     try {
         // Input aufbereiten und in db suchen
-        const pricePerDayCRentals = await dbSchema.find({ pricePerDay });
+        const pricePerDayCRentals = await dbSchema.find({ pricePerDay: req.params.pricePerDay });
         res.json(pricePerDayCRentals);
     } catch(err) {
         res.json({ message: err.message });
@@ -63,7 +63,7 @@ router.get('/pricePerDay/:pricePerDay', async(req, res) => {
 router.get('/brand/:brand', async (req, res) => {
     try {
         // heir ein paar brands zu auswahl
-        const brandCRentals = await dbSchema.find({ brand });
+        const brandCRentals = await dbSchema.find({ brand: req.params.brand });
         res.json(brandCRentals);
     } catch (err) {
         res.json({ message: err.message });
@@ -75,7 +75,7 @@ router.get('/brand/:brand', async (req, res) => {
 router.get('/model/:model', async (req, res) => {
     try {
         // hier wäre geil mit den Flughafen Codes FRA, YYZ, etc.
-        const modelCRentals = await dbSchema.find({ model });
+        const modelCRentals = await dbSchema.find({ model: req.params.model });
         res.json(modelCRentals);
     } catch (err) {
         res.json({ message: err.message });
@@ -84,10 +84,10 @@ router.get('/model/:model', async (req, res) => {
   });
 
 // cRental nach releaseDate
-router.get('/releasDate/:releaseDate', async (req, res) => {
+router.get('/releaseDate/:releaseDate', async (req, res) => {
     try {
         // hier muss eine Uhrzeit rein unixtimestamp
-        const releaseDateCRental = await dbSchema.find({ releaseDate });
+        const releaseDateCRental = await dbSchema.find({ releaseDate: req.params.releaseDate });
         res.json(releaseDateCRental);
     } catch (err) {
         res.json({ message: err.message });
@@ -99,7 +99,7 @@ router.get('/releasDate/:releaseDate', async (req, res) => {
 router.get('/doorQuant/:doorQuant', async(req, res) => {
     try {
         // Input handling bei put: [economy, business]
-        const doorQuantCRentals = await dbSchema.find({ doorQuant });
+        const doorQuantCRentals = await dbSchema.find({ doorQuant: req.params.doorQuant });
         res.json(doorQuantCRentals);
     } catch(err) {
         res.json({ message: err.message });
@@ -110,7 +110,7 @@ router.get('/doorQuant/:doorQuant', async(req, res) => {
 // cRental nach seats
 router.get('/seats/:seats', async(req, res) => {
     try {
-        const seatsCRental = await dbSchema.find({ seats });
+        const seatsCRental = await dbSchema.find({ seats: req.params.seats });
         res.json(seatsCRental);
     } catch(err) {
         res.json({ message: err.message });
@@ -143,7 +143,7 @@ router.post('/add', async (req, res) => {
 
 
 // PUT-METHOD
-router.put('/:id', checkFlight, async(req, res) => {
+router.put('/:id', checkCRental, async(req, res) => {
     try {
         res.flight.price_per_seat = req.body.price_per_seat;
         res.flight.start = req.body.start;
@@ -167,7 +167,7 @@ router.put('/:id', checkFlight, async(req, res) => {
 
 
 // DELETE-METHODS
-router.delete('/:id', checkFlight, async(req, res) => {
+router.delete('/:id', checkCRental, async(req, res) => {
     try {
         await dbSchema.deleteOne(res.flight);
         res.status(200).json({ "message": "Eintrag gelöscht" });

@@ -1,7 +1,7 @@
 //Mongoose
 const mongoose = require('mongoose');
 
-const hotelMusterSchema = new mongoose.Schema({
+const cRentalMusterSchema = new mongoose.Schema({
 
     pricePerDay: {
         type: Number,
@@ -33,4 +33,4 @@ const hotelMusterSchema = new mongoose.Schema({
     }*/
 
 });
-module.exports = mongoose.model('dbSchema_03', hotelMusterSchema)
+module.exports = mongoose.model('dbSchema_03', cRentalMusterSchema)
