@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindFoodFast</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    
+    <!-- Link to Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <!-- Google Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome-->
+    <script src="https://kit.fontawesome.com/92616ce9a3.js" crossorigin="anonymous"></script>
+
+    <!-- JS for API Interaction-->
+    <script>
+        // Creation of Slider with 3 random meals - only 3 because of performance reasons
+        window.onload = function displayRandomResults(){
+            var counter = 0;
+            while(counter != 3){
+                fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+                .then(responseURLRequest => responseURLRequest.json())
+                .then(randomMeal => {
+                    const meal = randomMeal.meals[0];
+
+                    let slideDiv = document.createElement("div");
+                    slideDiv.setAttribute("class", "carousel-item active");
+
+                    let imgContent = document.createElement("div");
+                    imgContent.setAttribute("style", "background-image: url('" + meal.strMealThumb + "');");
+                    imgContent.setAttribute("class", "slider-image");
+
+                    let captionDiv = document.createElement("div");
+                    captionDiv.setAttribute("class", "carousel-caption d-none d-md-block bg-light shadow-lg");
+
+                    let captionCaption = document.createElement("h2");
+                    captionCaption.innerHTML = meal.strMeal;
+                    captionCaption.setAttribute("class", "fw-bold darkgoldenrod");
+
+                    let textUnderCaption = document.createElement("p");
+                    textUnderCaption.innerHTML = meal.strCategory + " - " + meal.strArea;
+                    textUnderCaption.setAttribute("class", "text-dark");
+
+                    slideDiv.appendChild(imgContent);
+                    slideDiv.appendChild(captionDiv);
+
+                    captionDiv.appendChild(captionCaption);
+                    captionDiv.appendChild(textUnderCaption);
+
+                    let resultDiv = document.getElementById("carouselInput");
+
+                    resultDiv.appendChild(slideDiv);
+                })   
+                counter += 1;
+            }
+        }
+        //Displaying the meals by choosen category
+        function displayCategoryContent(category){
+
+            let currentDisplay = document.getElementById("mainContent");
+            currentDisplay.setAttribute("class", "container mt-3")
+            currentDisplay.innerHTML = "";
+
+            fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
+                .then(responseURLRequest => responseURLRequest.json())
+                .then(MealByCategory => {
+                  
+                    let containerWrapperDiv = document.createElement("div");
+                    containerWrapperDiv.setAttribute("class", "container");
+
+                    let rowDivWrapper = document.createElement("div");
+                    rowDivWrapper.setAttribute("class", "row row-cols-1 row-cols-md-3 g-4");
+
+
+                    for(var i = 0; i < MealByCategory.meals.length; i++) { 
+
+                        var meal = MealByCategory.meals[i];
+
+                        let colDiv = document.createElement("div");
+                        colDiv.setAttribute("class", "col");
+
+                        let outerDiv = document.createElement("div");
+                        outerDiv.setAttribute("class", "card shadow-sm");
+                        //outerDiv.setAttribute("style", "width: 18rem;");
+
+                        let imgContent = document.createElement("img");
+                        imgContent.setAttribute("src", meal.strMealThumb); // Hierüber noch bild 16:9 erzwingen
+                        imgContent.setAttribute("class", "card-img-top");
+
+                        let innerDiv = document.createElement("div");
+                        innerDiv.setAttribute("class", "card-body");
+
+                        let captionCaption = document.createElement("h4");
+                        captionCaption.innerHTML = meal.strMeal;
+                        captionCaption.setAttribute("class", "card-title fw-bold darkgoldenrod");
+
+
+                        let cardButton = document.createElement("a");
+                        cardButton.setAttribute("class", "btn btn-outline-dark darkgoldenrod")
+                        cardButton.innerHTML = "Mehr erfahren"
+                        cardButton.setAttribute("href", "details.html#" + meal.idMeal)
+
+                        innerDiv.appendChild(captionCaption);
+                        innerDiv.appendChild(cardButton);
+
+                        outerDiv.appendChild(innerDiv);
+                        outerDiv.appendChild(imgContent);
+
+                        colDiv.appendChild(outerDiv);
+
+                        rowDivWrapper.appendChild(colDiv);
+
+                        containerWrapperDiv.appendChild(rowDivWrapper);
+
+                        let resultDiv = document.getElementById("mainContent");
+
+                        resultDiv.appendChild(containerWrapperDiv);
+                    }
+        })
+        }
+        // Creation of cards by selected area of button group
+        function createCardsByArea(area) {
+
+            let cardContainer = document.getElementById("cardContainer");
+            cardContainer.innerHTML = "";
+
+                fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a=' + area)
+                .then(responseURLRequest => responseURLRequest.json())
+                .then(MealByArea => {
+
+                    for(var i = 0; i < MealByArea.meals.length; i++) { 
+
+                        var meal = MealByArea.meals[i];
+
+                        let colDiv = document.createElement("div");
+                        colDiv.setAttribute("class", "col");
+
+                        let outerDiv = document.createElement("div");
+                        outerDiv.setAttribute("class", "card shadow-sm");
+                        //outerDiv.setAttribute("style", "width: 18rem;");
+
+                        let imgContent = document.createElement("img");
+                        imgContent.setAttribute("src", meal.strMealThumb); // Hierüber noch bild 16:9 erzwingen
+                        imgContent.setAttribute("class", "card-img-top");
+
+                        let innerDiv = document.createElement("div");
+                        innerDiv.setAttribute("class", "card-body");
+
+                        let captionCaption = document.createElement("h4");
+                        captionCaption.innerHTML = meal.strMeal;
+                        captionCaption.setAttribute("class", "card-title fw-bold darkgoldenrod");
+
+                        let cardButton = document.createElement("a");
+                        cardButton.setAttribute("class", "btn btn-outline-dark darkgoldenrod")
+                        cardButton.innerHTML = "Mehr erfahren"
+                        cardButton.setAttribute("href", "details.html#" + meal.idMeal)
+
+                        innerDiv.appendChild(captionCaption);
+                        innerDiv.appendChild(cardButton);
+
+                        outerDiv.appendChild(innerDiv);
+                        outerDiv.appendChild(imgContent);
+
+                        colDiv.appendChild(outerDiv);
+
+                        let resultDiv = document.getElementById("cardContainer");
+
+                        resultDiv.appendChild(colDiv);
+                    }
+                })   
+        }
+        //Redirects to search page with custom searchvalue in href
+        function generateHref() {
+            let searchInput = document.getElementById("searchInput").value;
+            location.href= "search.html#" + searchInput;
+        }
+    </script>
+</head>
+<body class="bg-light">
+    <!-- "Header" -->
+    <div class="shadow-lg sticky-top">
+        <!-- Navigationbar -->
+        <nav class="navbar container-fluid navbar-expand-lg bg-light bg-body-tertiary pt-lg-2">
+            <div class="container">
+                <a class="navbar-brand fs-2 fw-bold" href="index.html">
+                    <i class="fa-solid fa-utensils"></i>
+                    Find<span class="darkgoldenrod">Food</span>Fast</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-lg-2">
+                        <a class="nav-link active" aria-current="page" href="about.html">Über uns</a>
+                    </li>
+                    <li class="nav-item mx-lg-2 dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Food-Kategorien</a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="displayCategoryContent('Beef')" class="dropdown-item" href="#">Beef</a></li>
+                            <li><a onclick="displayCategoryContent('Breakfast')" class="dropdown-item" href="#">Breakfast</a></li>
+                            <li><a onclick="displayCategoryContent('Chicken')" class="dropdown-item" href="#">Chicken</a></li>
+                            <li><a onclick="displayCategoryContent('Dessert')" class="dropdown-item" href="#">Dessert</a></li>
+                            <li><a onclick="displayCategoryContent('Goat')" class="dropdown-item" href="#">Goat</a></li>
+                            <li><a onclick="displayCategoryContent('Lamb')" class="dropdown-item" href="#">Lamb</a></li>
+                            <li><a onclick="displayCategoryContent('Miscellaneous')" class="dropdown-item" href="#">Miscellaneous</a></li>
+                            <li><a onclick="displayCategoryContent('Pasta')" class="dropdown-item" href="#">Pasta</a></li>
+                            <li><a onclick="displayCategoryContent('Pork')" class="dropdown-item" href="#">Pork</a></li>
+                            <li><a onclick="displayCategoryContent('Seafood')" class="dropdown-item" href="#">Seafood</a></li>
+                            <li><a onclick="displayCategoryContent('Side')" class="dropdown-item" href="#">Side</a></li>
+                            <li><a onclick="displayCategoryContent('Starter')" class="dropdown-item" href="#">Starter</a></li>
+                            <li><a onclick="displayCategoryContent('Vegan')" class="dropdown-item" href="#">Vegan</a></li>
+                            <li><a onclick="displayCategoryContent('Vegetarian')" class="dropdown-item" href="#">Vegetarian</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-lg-2">
+                        <a class="nav-link disabled">Coming Soon!</a>
+                    </li>
+
+                </ul>
+
+                <!-- Toast for Information about "Food-Begriff" -->
+                    <a class="tt nav-link active d-none d-lg-block p-2" data-bs-placement="bottom" title="Ein Food-Begriff kann Teil des Namens eines Gerichts sein (z.B. Salmon) oder eine Kategorie beschreiben. Achte bitte auf eine englische Schreibweise">?</a>
+                    <!-- Search Functionality-->                
+                <form class="d-flex" role="search">
+                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Gib einen Food-Begriff ein" aria-label="Search">
+                    <div class="btn btn-outline-dark" onclick="generateHref()" type="submit">Suchen!</div>
+                </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- "Body" -->
+    <div id="mainContent" class="">
+        <!-- Carousel with random meals -->
+        <div id="carouselExample" class="carousel slide carousel-style carousel-dark">
+            <div class="carousel-inner" id="carouselInput">
+                <!-- Content created in JavaScript-->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Davor</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Danach</span>
+            </button>
+        </div>
+        <!-- Row for announcements -->
+        <div class="alert alert-success alert-dismissible fade show text-center fs-3" role="alert">
+            <strong>WOW!</strong> Neue Gerichte verfügbar!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="container mt-5">
+            <h1 class="darkgoldenrod">Um was geht es hier?</h1>
+            <p>Die Website "FindFoodFast" ist eine Plattform, die es dir ermöglicht, schnell und einfach nach Lebensmitteln oder Gerichten zu suchen. 
+            du kannst z.B eine Kategorie auswählen, um dann eine Auswahl an Gerichten präsentiert zu bekommen, die zu der ausgewählten Kategorie passen. 
+            Du kannst so auch mehr Informationen über ein bestimmtes Gericht erhalten, indem du auf den Knopf "Mehr erfahren" klickst. 
+            Die Website ist besonders nützlich für Menschen, die schnell eine Idee für ein leckeres und ausgewogenes Essen suchen und sich von der breiten Auswahl 
+            an Gerichten inspirieren lassen möchten, ohne direkt überfordert zu sein.
+            </p>
+        </div>
+        <div class="container mt-5">
+            <h2 class="darkgoldenrod">Englische Suchbegriffe und Ergebnisse?!</h2>
+            <p>Unsere Website benutzt eine öffentliche API, da diese international erreichbar ist, müssen Anfragen an die API(Suchanfragen) in englisch gestellt werden.
+            </p>
+        </div>
+        <div class="container mt-5">
+            <h1 class="darkgoldenrod">Wähle die Herkunft deines Gerichts!</h1>
+            <p>Mit der Wahl einer Herkunft wird dir die dazu passende, feinste Auswahl an Gerichten präsentiert. Scrolle doch mal durch. 
+            Wenn dich ein Gericht interessiert klicke einfachd den Knopf <span class="darkgoldenrod">"Mehr erfahren"</span>. Du wirst ganz sicher nicht enttäuscht werden. ;) </p>
+        </div>
+
+            <!-- Responsive by screen size-->
+            <div class="container d-none d-md-block">
+                <div class="btn-group  col-12 py-2" role="group" aria-label="origin area group">
+                    <button onclick="createCardsByArea('American')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">American</button>
+                    <button onclick="createCardsByArea('British')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">British</button>
+                    <button onclick="createCardsByArea('Canadian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Canadian</button>
+                    <button onclick="createCardsByArea('Chinese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Chinese</button>
+                    <button onclick="createCardsByArea('Croatian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Croatian</button>
+                    <button onclick="createCardsByArea('Dutch')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Dutch</button>
+                    <button onclick="createCardsByArea('Egyptian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Egyptian</button>
+                    <button onclick="createCardsByArea('French')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">French</button>
+                    <button onclick="createCardsByArea('Turkish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Turkish</button>
+                </div>
+            </div>
+            <div class="container d-none d-md-block">
+                <div class="btn-group col-12 pb-2" role="group" aria-label="origin area group">
+                    <button onclick="createCardsByArea('Greek')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Greek</button>
+                    <button onclick="createCardsByArea('Indian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Indian</button>
+                    <button onclick="createCardsByArea('Irish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Irish</button>
+                    <button onclick="createCardsByArea('Italian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Italian</button>
+                    <button onclick="createCardsByArea('Jamaican')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Jamaican</button>
+                    <button onclick="createCardsByArea('Japanese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Japanese</button>
+                    <button onclick="createCardsByArea('Kenyan')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Kenyan</button>
+                    <button onclick="createCardsByArea('Malaysian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Malaysian</button>
+                    <button onclick="createCardsByArea('Vietnamese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Vietnamese</button>
+                </div>
+            </div>
+            <div class="container d-none d-md-block">
+                <div class="btn-group col-12 pb-2" role="group" aria-label="origin area group">
+                    <button onclick="createCardsByArea('Mexican')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Mexican</button>
+                    <button onclick="createCardsByArea('Moroccan')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Moroccan</button>
+                    <button onclick="createCardsByArea('Polish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Polish</button>
+                    <button onclick="createCardsByArea('Portugese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Portugese</button>
+                    <button onclick="createCardsByArea('Russian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Russian</button>
+                    <button onclick="createCardsByArea('Spanish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Spanish</button>
+                    <button onclick="createCardsByArea('Thai')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Thai</button>
+                    <button onclick="createCardsByArea('Tunisian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Tunisian</button>
+                    <button onclick="createCardsByArea('Unknown')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Unknown</button>
+                </div>
+            </div>
+            <!-- for mobile devices-->
+            <div class="container d-md-none d-sm-block">
+                <div class="btn-group-vertical col-12 pb-2" role="group" aria-label="origin area group">
+                    <button onclick="createCardsByArea('American')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">American</button>
+                    <button onclick="createCardsByArea('British')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">British</button>
+                    <button onclick="createCardsByArea('Canadian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Canadian</button>
+                    <button onclick="createCardsByArea('Chinese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Chinese</button>
+                    <button onclick="createCardsByArea('Croatian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Croatian</button>
+                    <button onclick="createCardsByArea('Dutch')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Dutch</button>
+                    <button onclick="createCardsByArea('Egyptian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Egyptian</button>
+                    <button onclick="createCardsByArea('French')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">French</button>
+                    <button onclick="createCardsByArea('Turkish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Turkish</button>
+                    <button onclick="createCardsByArea('Greek')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Greek</button>
+                    <button onclick="createCardsByArea('Indian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Indian</button>
+                    <button onclick="createCardsByArea('Irish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Irish</button>
+                    <button onclick="createCardsByArea('Italian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Italian</button>
+                    <button onclick="createCardsByArea('Jamaican')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Jamaican</button>
+                    <button onclick="createCardsByArea('Japanese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Japanese</button>
+                    <button onclick="createCardsByArea('Kenyan')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Kenyan</button>
+                    <button onclick="createCardsByArea('Malaysian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Malaysian</button>
+                    <button onclick="createCardsByArea('Vietnamese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Vietnamese</button>
+                    <button onclick="createCardsByArea('Mexican')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Mexican</button>
+                    <button onclick="createCardsByArea('Moroccan')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Moroccan</button>
+                    <button onclick="createCardsByArea('Polish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Polish</button>
+                    <button onclick="createCardsByArea('Portugese')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Portugese</button>
+                    <button onclick="createCardsByArea('Russian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Russian</button>
+                    <button onclick="createCardsByArea('Spanish')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Spanish</button>
+                    <button onclick="createCardsByArea('Thai')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Thai</button>
+                    <button onclick="createCardsByArea('Tunisian')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Tunisian</button>
+                    <button onclick="createCardsByArea('Unknown')" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Unknown</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="cardContainer">
+                <!-- Creation of cards by area-->
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container-fluid footer mt-5 pt-3 text-center">&copy; 2022 <i class="fa-solid fa-utensils"></i>
+        Find<span class="darkgoldenrod">Food</span>Fast</a> - Samis Ellsässer
+        <a class="nav-link active" aria-current="page" href="https://github.com/samis0707/webpage">
+        <i class="fa-brands fa-github"></i>
+        </a>
+    </div>
+    
+
+    <!-- JS Bootstrap Bundle Link-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- Initializing BS tooltip-->
+    <script>
+        const tooltips = document.querySelectorAll('.tt')
+        tooltips.forEach(t => {
+            new bootstrap.Tooltip(t)
+        })
+    </script>
+</body>
+</html>

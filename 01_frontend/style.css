@@ -1,0 +1,87 @@
+/* Allgemein */
+
+body {
+    font-family: 'Source Serif Pro', serif;
+}
+
+.darkgoldenrod {
+    color: darkgoldenrod;
+}
+
+.navbar {
+    border-bottom: 1px solid darkgoldenrod;
+}
+
+/* Navigation */
+.nav-link {
+    cursor: pointer;
+}
+
+.nav-link:active,
+.nav-link:hover {
+    color: darkgoldenrod !important;
+}
+
+.dropdown-item {
+cursor: pointer;
+}
+
+.dropdown-item:active,
+.dropdown-item:hover {
+color: darkgoldenrod !important;
+}
+
+/* Slider */
+.slider-image {
+    width: 100vw;
+    height: 70vh;
+    background-position: center;
+    background-size: cover;
+
+}
+.carousel-caption {
+    border-radius: 20px;
+    opacity: 0.9;
+}
+.carousel-style {
+    border-bottom: 1px solid darkgoldenrod;
+}
+
+/* Details Page*/
+.details-image {
+    border-radius: 20px;
+    width: 100vw;
+    height: 70vh;
+    background-position: center;
+    background-size: cover;
+
+}
+.underline {
+    border-bottom: 1px solid darkgoldenrod;
+}
+.footer {
+    font-size: 1rem;
+    border-top: 1px solid darkgoldenrod;
+}
+
+/* About Us */
+.about-image {
+    border-radius:20px;
+    width: 280px;
+    height: 280px;
+    background-position: center;
+    background-size: cover;
+}
+
+.git-link {
+    color: black;
+}
+
+.git-link {
+    cursor: pointer;
+}
+
+.git-link:active,
+.git-link:hover {
+    color: darkgoldenrod !important;
+}
