@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">FFF - Details of Food</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    
+    <!-- Link to Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <!-- Google Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@200;400&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS-->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome-->
+    <script src="https://kit.fontawesome.com/92616ce9a3.js" crossorigin="anonymous"></script>
+
+    <script>
+        //Receiving the id of the meal over href and splitting it
+        window.onload= function getIdOfMeal() {
+            let urlString = document.location.href
+            let paramString = urlString.split('#');
+            console.log(paramString[1]);
+            loadDetailsOfMeal(paramString[1]);
+        }
+        // API Request about the meal with given id
+        function loadDetailsOfMeal(mealid) {
+            fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealid)
+            .then(responseURLRequest => responseURLRequest.json())
+            .then(mealById => {
+                displayDetailsOfMeal(mealById.meals[0]);
+                //Changing the page title dynamically
+                document.getElementById("pageTitle").innerHTML = "FFF - " + mealById.meals[0].strMeal;
+            })
+        }
+        //Displaying the meals by choosen category
+        function displayCategoryContent(category){
+
+            let currentDisplay = document.getElementById("mainContent");
+            currentDisplay.innerHTML = "";
+
+            fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
+                .then(responseURLRequest => responseURLRequest.json())
+                .then(MealByCategory => {
+                  
+                    let rowDivWrapper = document.createElement("div");
+                    rowDivWrapper.setAttribute("class", "row row-cols-1 row-cols-md-3 g-4");
+
+
+                    for(var i = 0; i < MealByCategory.meals.length; i++) { 
+
+                        var meal = MealByCategory.meals[i];
+
+                        let colDiv = document.createElement("div");
+                        colDiv.setAttribute("class", "col");
+
+                        let outerDiv = document.createElement("div");
+                        outerDiv.setAttribute("class", "card shadow-sm");
+                        //outerDiv.setAttribute("style", "width: 18rem;");
+
+                        let imgContent = document.createElement("img");
+                        imgContent.setAttribute("src", meal.strMealThumb); // Hierüber noch bild 16:9 erzwingen
+                        imgContent.setAttribute("class", "card-img-top");
+
+                        let innerDiv = document.createElement("div");
+                        innerDiv.setAttribute("class", "card-body");
+
+                        let captionCaption = document.createElement("h4");
+                        captionCaption.innerHTML = meal.strMeal;
+                        captionCaption.setAttribute("class", "card-title fw-bold darkgoldenrod");
+
+
+                        let cardButton = document.createElement("a");
+                        cardButton.setAttribute("class", "btn btn-outline-dark darkgoldenrod")
+                        cardButton.innerHTML = "Mehr erfahren"
+                        cardButton.setAttribute("href", "details.html#" + meal.idMeal)
+
+                        innerDiv.appendChild(captionCaption);
+                        innerDiv.appendChild(cardButton);
+
+                        outerDiv.appendChild(innerDiv);
+                        outerDiv.appendChild(imgContent);
+
+                        colDiv.appendChild(outerDiv);
+
+                        rowDivWrapper.appendChild(colDiv);
+
+                        let resultDiv = document.getElementById("mainContent");
+
+                        resultDiv.appendChild(rowDivWrapper);
+                    }
+        })
+        }
+        //displaying the meal dynamically
+        function displayDetailsOfMeal(meal) {
+
+            let nameOfMeal = document.getElementById("nameOfMeal");
+            nameOfMeal.innerHTML = meal.strMeal;
+
+            let categoryOfMeal = document.getElementById("categoryOfMeal");
+            categoryOfMeal.innerHTML = "Kategorie: " + meal.strCategory;
+
+            let areaOfMeal = document.getElementById("areaOfMeal");
+            areaOfMeal.innerHTML = "Herkunft: " + meal.strArea;
+
+            let imgContent = document.createElement("img");
+            imgContent.setAttribute("src", meal.strMealThumb);
+            imgContent.setAttribute("style", "border-radius: 20px;");
+            imgContent.setAttribute("class", "shadow-sm img-responsive");
+            
+            document.getElementById("imgOfMeal").appendChild(imgContent);
+
+            let mealRecipe = document.getElementById("mealRecipe");
+            mealRecipe.innerHTML = meal.strInstructions;
+            
+            //Table for Ingredients and Measures
+            for(var i = 1; i < 21; i++) {
+                if (meal['strIngredient'+ i] != '') {
+                    let rowWrapper = document.createElement("tr");
+
+                    let rowHeader = document.createElement("td");
+                    rowHeader.setAttribute("scope", "row");
+                    rowHeader.innerHTML = i;
+
+                    let valOne = document.createElement("td");
+                    var a = "strIngredient";
+                    valOne.innerHTML = meal['strIngredient'+ i];
+
+                    let valTwo = document.createElement("td");
+                    valTwo.innerHTML = meal['strMeasure'+ i];
+
+                    rowWrapper.appendChild(rowHeader);
+                    rowWrapper.appendChild(valOne);
+                    rowWrapper.appendChild(valTwo);
+
+                    let tableThead = document.getElementById("tableThead");
+                    tableThead.appendChild(rowWrapper); 
+                }
+                else {
+                    break;
+                }
+            }
+            let vidContent = document.createElement("iframe");
+            vidContent.setAttribute("class", "embed-responsive-item");
+
+            // Changing video link because of X-Frame Options
+            let videoLink = meal.strYoutube;
+            let validVideoLink = videoLink.replace("watch?v=", "embed/")
+
+            vidContent.setAttribute("src", validVideoLink);
+            document.getElementById("videoDisplay").appendChild(vidContent);
+            
+
+            // Creation of Button for Source
+            let sourceBtn = document.createElement("a");
+            sourceBtn.setAttribute("class", "btn btn-outline-dark darkgoldenrod");
+            sourceBtn.setAttribute("href", meal.strSource);
+            sourceBtn.setAttribute("type", "button");
+            sourceBtn.innerHTML= "Hier klicken!";
+
+            document.getElementById("mealSource").appendChild(sourceBtn);
+            
+        }
+        //Redirects to search page with custom searchvalue in href
+        function generateHref() {
+            let searchInput = document.getElementById("searchInput").value;
+            location.href= "search.html#" + searchInput;
+        }
+    </script>
+
+</head>
+<body class="bg-light">
+    <!-- "Header" -->
+    <div class="shadow-lg sticky-top">
+        <!-- Navigationbar -->
+        <nav class="navbar container-fluid navbar-expand-lg bg-light bg-body-tertiary pt-lg-2">
+            <div class="container">
+                <a class="navbar-brand fs-2 fw-bold" href="index.html">
+                    <i class="fa-solid fa-utensils"></i>
+                    Find<span class="darkgoldenrod">Food</span>Fast</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-lg-2">
+                        <a class="nav-link active" aria-current="page" href="about.html">Über uns</a>
+                    </li>
+                    <li class="nav-item mx-lg-2 dropdown">
+                        <a class="nav-link disabled dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Food-Kategorien</a>
+                        <ul class="dropdown-menu">
+                            <li><a onclick="displayCategoryContent('Beef')" class="dropdown-item" href="#">Beef</a></li>
+                            <li><a onclick="displayCategoryContent('Breakfast')" class="dropdown-item" href="#">Breakfast</a></li>
+                            <li><a onclick="displayCategoryContent('Chicken')" class="dropdown-item" href="#">Chicken</a></li>
+                            <li><a onclick="displayCategoryContent('Dessert')" class="dropdown-item" href="#">Dessert</a></li>
+                            <li><a onclick="displayCategoryContent('Goat')" class="dropdown-item" href="#">Goat</a></li>
+                            <li><a onclick="displayCategoryContent('Lamb')" class="dropdown-item" href="#">Lamb</a></li>
+                            <li><a onclick="displayCategoryContent('Miscellaneous')" class="dropdown-item" href="#">Miscellaneous</a></li>
+                            <li><a onclick="displayCategoryContent('Pasta')" class="dropdown-item" href="#">Pasta</a></li>
+                            <li><a onclick="displayCategoryContent('Pork')" class="dropdown-item" href="#">Pork</a></li>
+                            <li><a onclick="displayCategoryContent('Seafood')" class="dropdown-item" href="#">Seafood</a></li>
+                            <li><a onclick="displayCategoryContent('Side')" class="dropdown-item" href="#">Side</a></li>
+                            <li><a onclick="displayCategoryContent('Starter')" class="dropdown-item" href="#">Starter</a></li>
+                            <li><a onclick="displayCategoryContent('Vegan')" class="dropdown-item" href="#">Vegan</a></li>
+                            <li><a onclick="displayCategoryContent('Vegetarian')" class="dropdown-item" href="#">Vegetarian</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item mx-lg-2">
+                        <a class="nav-link disabled">Coming Soon!</a>
+                    </li>
+                </ul>
+
+                <!-- Toast for Information about "Food-Begriff" -->
+                    <a class="tt nav-link active d-none d-lg-block p-2" data-bs-placement="bottom" title="Ein Food-Begriff ist z.B. 'Salmon', achte auf die englische Schreibweise">?</a>
+                    <!-- Search Functionality-->                
+                <form class="d-flex" role="search">
+                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Gib einen Food-Begriff ein" aria-label="Search">
+                    <div class="btn btn-outline-dark" onclick="generateHref()" type="submit">Suchen!</div>
+                </form>
+                </div>
+            </div>
+        </nav>
+    </div>    
+    <!-- "Body" Prototyp Detailspage -->
+    <div class="container-lg my-3" id="detailsPage">
+        <!-- Display of Meals basic data-->
+        <div class="row md-3 detail-header pt-3">
+            <div class="col col-8"><h1 class="darkgoldenrod" id="nameOfMeal"></h1></div>
+        </div>
+        <div class="container">
+            <div class="float-lg-start mx-lg-5 mb-lg-4 col-xs-4" id="imgOfMeal"></div>
+            <div class="text-left">
+                <div class="row py-auto pb-3">
+                    <h2 id="categoryOfMeal"></h1>
+                    <h2 class="underline" id="areaOfMeal"></h1>
+                </div>
+                    <h3 class="darkgoldenrod">Instructions</h3>
+                    <p id="mealRecipe"></p>
+                <div class="row">
+                    <div class="col">
+                        <h3 class="darkgoldenrod">Videoanleitung</h3>
+                        <div class="embed-responsive embed-responsive-16by9 text-center" id="videoDisplay"></div>
+                    </div>
+                    <div class="col" id="mealSource">
+                        <h3 class="darkgoldenrod">Quelle zum Gericht</h3>
+                        <!-- Button is created dynamically by JS-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <!-- Table with two columns-->
+            <table class="table" id="table">
+                <thead id="tableThead">
+                  <tr>
+                    <th scope="col">Nr.</th>
+                    <th scope="col">Zutat</th>
+                    <th scope="col">Menge</th>
+                  </tr>
+                </thead>
+            <!-- Content is created dynamically by JS -->
+            </table>  
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid footer mt-5 pt-3 text-center">&copy; 2022 <i class="fa-solid fa-utensils"></i>
+        Find<span class="darkgoldenrod">Food</span>Fast</a> - Samis Ellsässer
+        <a class="nav-link active" aria-current="page" href="https://github.com/samis0707/webpage">
+        <i class="fa-brands fa-github"></i>
+        </a>
+    </div>
+
+    <!-- JS Bootstrap Bundle Link-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- Initializing BS tooltip-->
+    <script>
+        const tooltips = document.querySelectorAll('.tt')
+        tooltips.forEach(t => {
+            new bootstrap.Tooltip(t)
+        })
+    </script>
+</body>
+</html>

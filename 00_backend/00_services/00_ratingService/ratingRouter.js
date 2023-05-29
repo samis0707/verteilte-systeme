@@ -1,12 +1,15 @@
 // Express.JS
 const express = require('express');
 const dbSchema = require('./dbSchema');
-
+// CORS importieren
 const router = express.Router();
 
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
 
+//CORS für Cross Site Requests
+const cors = require('cors');
+router.use(cors());
 
 
 // MIDDLEWARE
