@@ -6,30 +6,30 @@ Das verteilte System besteht aus zwei Hauptkomponenten: den Webfrontends und den
 Die Webfrontends dienen als Benutzeroberflächen, über die Benutzer mit dem System interagieren können. 
 Die Server stellen die Funktionalität zur Verfügung, um die erforderlichen Aufgaben auszuführen. Die Kommunikation zwischen den Webfrontends und den Servern erfolgt über RESTful APIs.
 
-Admin-Webfrontend:
+**Admin-Webfrontend:**
 Das Admin-Webfrontend ermöglicht es Administratoren, CRUD-Operationen auf verschiedenen Entitäten des Systems durchzuführen. 
 Dazu gehören beispielsweise die Verwaltung von Bewertungen, Hotels, Flugverbindungen und Mietwagen. 
 Das Admin-Webfrontend stellt eine Benutzeroberfläche bereit, über die Administratoren neue Entitäten erstellen, bestehende aktualisieren oder löschen können. Es kommuniziert mit den entsprechenden Servern über die definierten APIs.
 
-User-Webfrontend:
+**User-Webfrontend:**
 Das User-Webfrontend richtet sich an normale Benutzer, die das System nutzen möchten. 
 Es bietet eine Benutzeroberfläche, über die Benutzer Hotels suchen, Flugverbindungen abrufen, Mietwagen buchen und Bewertungen abgeben können. 
 Das User-Webfrontend kommuniziert ebenfalls über die RESTful APIs mit den entsprechenden Servern.
 
-Bewertungsserver:
+**Bewertungsserver:**
 Der Bewertungsserver ist verantwortlich für die Verwaltung und Speicherung von Bewertungen. 
 Er bietet eine API an, über die das Admin-Webfrontend neue Bewertungen erstellen, bestehende aktualisieren oder löschen kann. 
 Das User-Webfrontend kann über die API Bewertungen abrufen und neue Bewertungen abgeben.
 
-Hotel-Server:
+**Hotel-Server:**
 Der Hotel-Server verwaltet die Hotels im System. 
 Er bietet eine API an, über die das Admin-Webfrontend neue Hotels erstellen, bestehende aktualisieren oder löschen kann. Das User-Webfrontend kann über die API nach Hotels suchen und Informationen zu einzelnen Hotels abrufen.
 
-Flugverbindungsserver:
+**Flugverbindungsserver:**
 Der Flugverbindungsserver stellt Informationen zu Flugverbindungen bereit. 
 Er bietet eine API an, über die das User-Webfrontend Flugverbindungen abrufen kann. Das Admin-Webfrontend interagiert nicht direkt mit diesem Server.
 
-Flugverbindungsserver:
+**Flugverbindungsserver:**
 Der Flugverbindungsserver stellt Informationen zu Flugverbindungen bereit. 
 Er bietet eine API an, über die das User-Webfrontend Flugverbindungen abrufen kann. Das Admin-Webfrontend interagiert nicht direkt mit diesem Server.
 
