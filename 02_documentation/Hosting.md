@@ -28,7 +28,10 @@ Für das verteilte System können folgedne AWS-Services genutzt werden:
 **Gesamtkosten:** Die Gesmatkosten würden ca. 100$ bis 300$ betragen. 
 
 ## Google Cloud Platform (GCP)
-**Funktionalität:** GCP bietet ähnliche Services wie AWS, darunter Compute Engine für virtuelle Maschinen, Load Balancer für die Verteilung des Netzwerkverkehrs und Cloud Storage für die Dateispeicherung. GCP bietet auch spezifische Dienste wie App Engine und Kubernetes Engine für die Bereitstellung und Verwaltung von skalierbaren Anwendungen.
+
+### Funktionalität
+
+GCP bietet ähnliche Services wie AWS, darunter Compute Engine für virtuelle Maschinen, Load Balancer für die Verteilung des Netzwerkverkehrs und Cloud Storage für die Dateispeicherung. GCP bietet auch spezifische Dienste wie App Engine und Kubernetes Engine für die Bereitstellung und Verwaltung von skalierbaren Anwendungen.
 
 Für das verteilte System können folgedne GCP-Services genutzt werden:
 
@@ -36,6 +39,16 @@ Für das verteilte System können folgedne GCP-Services genutzt werden:
 - Cloud Functions für die Erstellung serverloser Funktionen, die als Backend für Ihre APIs dienen können.
 - Cloud SQL für die Speicherung der Daten in den Backend-Servern.
 - Load Balancer für die Lastverteilung zwischen den Web-Frontends und den Servern. 
+
+### Kosten
+
+Compute Engine: Die Kosten variieren je nach Größe und Anzahl der verwendeten virtuellen Maschinen. Eine grobe Schätzung könnte zwischen 50$ und 200$ pro Monat liegen.
+
+Cloud Functions: Die Kosten hängen von der Anzahl und Dauer der Funktionen ab. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
+
+Cloud SQL: Die Kosten richten sich nach der Größe der Datenbank und dem Speicherbedarf. Eine Schätzung könnte zwischen 20$ und 100$ pro Monat liegen.
+
+Load Balancer: Die Kosten variieren je nach Datenverkehr und Anzahl der Anfragen. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
 
 
 ## Microsoft Azure 
