@@ -78,32 +78,36 @@
                         <div id="hotelBearbeiten" class="m-5 w-50">
                             <p class="" style="border-bottom:2px solid #fc3c5c">Hotel bearbeiten</p>
 
-                            <form>
+                            <form id="hotelPutForm">
+                                <div class="mb-1">
+                                    <label  class="form-label">ID</label>
+                                    <input class="form-control" id="hotelBearbeitenId">
+                                </div>
                                 <div class="mb-1">
                                     <label  class="form-label">Preis</label>
-                                    <input class="form-control" id="hotelPreis">
+                                    <input class="form-control" id="hotelBearbeitenPreis">
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label">Anzahl Betten</label>
-                                    <input class="form-control" id="hotelBetten">
+                                    <input class="form-control" id="hotelBearbeitenBetten">
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label">Titel</label>
-                                    <input class="form-control" id="hotelTitel">
+                                    <input class="form-control" id="hotelBearbeitenTitel">
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label">Beschreibung</label>
-                                    <input class="form-control" id="hotelBeschreibung">
+                                    <input class="form-control" id="hotelBearbeitenBeschreibung">
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label">Land</label>
-                                    <input class="form-control" id="hotelLand">
+                                    <input class="form-control" id="hotelBearbeitenLand">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Stadt</label>
-                                    <input class="form-control" id="hotelStadt">
+                                    <input class="form-control" id="hotelBearbeitenStadt">
                                 </div>
-                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
+                                <button id="hotelBearbeitenBtn" type="button" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
                             </form>
                         </div>
 
