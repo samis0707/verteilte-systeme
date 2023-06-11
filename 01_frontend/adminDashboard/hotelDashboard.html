@@ -17,6 +17,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+              <a class="nav-link" href="../homePage/homePage.html">Homepage</a>
               <a class="nav-link active" aria-current="page" href="#">Hotel & Rating</a>
               <a class="nav-link" href="./flightAndCarDashboard.html">Flights and Car Rental</a>
             </div>
@@ -81,11 +82,15 @@
                             <form id="hotelPutForm">
                                 <div class="mb-1">
                                     <label  class="form-label">ID</label>
-                                    <input class="form-control" id="hotelBearbeitenId">
+                                    <input class="form-control" id="hotelBearbeitenId" ull>
                                 </div>
                                 <div class="mb-1">
                                     <label  class="form-label">Preis</label>
                                     <input class="form-control" id="hotelBearbeitenPreis">
+                                </div>
+                                <div class="mb-1">
+                                    <label  class="form-label">Preis Kategorie</label>
+                                    <input class="form-control" id="hotelBearbeitenPreisKategorie">
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label">Anzahl Betten</label>
@@ -118,9 +123,9 @@
                             <form>
                                 <div class="mb-3 w-25">
                                     <label class="form-label">ID</label>
-                                    <input class="form-control" id="hotelId">
+                                    <input class="form-control" id="hotelLöschenId">
                                 </div>
-                                <button  type="submit" class="btn btn-danger" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
+                                <button id="hotelLöschenBtn" type="button" class="btn btn-danger" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
                             </form>
                         </div>
         </section>
@@ -139,7 +144,7 @@
                                 country: req.body.country,
                                 city: req.body.city,
                             -->
-                            <form>
+                            <form id="hotelRatingAddForm">
                                 <div class="mb-1">
                                     <label  class="form-label">Kategorie</label>
                                     <input class="form-control" id="hotelRatingKategorie">
@@ -164,7 +169,7 @@
                                     <label class="form-label">Stadt</label>
                                     <input class="form-control" id="hotelRatingStadt">
                                 </div>
-                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
+                                <button id="hotelRatingAddBtn" type="button" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
                             </form>
                         </div>
 
@@ -172,7 +177,11 @@
                         <div id="hotelRatingBearbeiten" class="m-5 w-50">
                             <p class="" style="border-bottom:2px solid #fc3c5c">Hotelrating bearbeiten</p>
 
-                            <form id="form">
+                            <form id="hotelRatingBearbeitenForm">
+                                <div class="mb-1">
+                                    <label  class="form-label">ID</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenId">
+                                </div>
                                 <div class="mb-1">
                                     <label  class="form-label">Kategorie</label>
                                     <input class="form-control" id="hotelRatingBearbeitenKategorie">
@@ -197,7 +206,7 @@
                                     <label class="form-label">Stadt</label>
                                     <input class="form-control" id="hotelRatingBearbeitenStadt">
                                 </div>
-                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
+                                <button id="hotelRatingBearbeitenBtn" type="button" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
                             </form>
                         </div>
 
@@ -208,9 +217,9 @@
                             <form>
                                 <div class="mb-3 w-25">
                                     <label class="form-label">ID</label>
-                                    <input class="form-control" id="hotelRaingId">
+                                    <input class="form-control" id="hotelRatingLöschenId">
                                 </div>
-                                <button  type="submit" class="btn btn-danger"style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
+                                <button id="hotelRatingLöschenBtn" type="button" class="btn btn-danger"style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
                             </form>
                         </div>
             </section>
@@ -231,7 +240,7 @@
         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
 
-    <script src="adminDashboard.js"></script>
+    <script src="hotelDashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

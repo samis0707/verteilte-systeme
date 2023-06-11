@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Admin Dashboard</title>
 </head>
@@ -17,6 +16,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+              <a class="nav-link" href="../homePage/homePage.html">Homepage</a>
               <a class="nav-link" aria-current="page" href="./hotelDashboard.html">Hotel & Rating</a>
               <a class="nav-link active" href="#">Flights and Car Rental</a>
             </div>
@@ -41,7 +41,7 @@
                                 doorQuant: req.body.doorQuant,
                                 seats: req.body.seats,
                             -->
-                            <form>
+                            <form id="CarAddForm">
                                 <div class="mb-1">
                                     <label  class="form-label">Preis pro Tag</label>
                                     <input class="form-control" id="CarPreis">
@@ -66,7 +66,7 @@
                                     <label class="form-label">Sitze</label>
                                     <input class="form-control" id="CarSitze">
                                 </div>
-                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
+                                <button id="CarAddBtn" type="button" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
                             </form>
                         </div>
 
@@ -74,7 +74,11 @@
                         <div id="CarBearbeiten" class="m-5 w-50">
                             <p class="" style="border-bottom:2px solid #fc3c5c">Car Rental Eintrag bearbeiten</p>
 
-                            <form>
+                            <form id="CarPutForm">
+                                <div class="mb-1">
+                                    <label  class="form-label">ID</label>
+                                    <input class="form-control" id="CarBearbeitenId">
+                                </div>
                                 <div class="mb-1">
                                     <label  class="form-label">Preis pro Tag</label>
                                     <input class="form-control" id="CarBearbeitenPreis">
@@ -99,7 +103,7 @@
                                     <label class="form-label">Sitze</label>
                                     <input class="form-control" id="CarBearbeitenSitze">
                                 </div>
-                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
+                                <button id="CarPutBtn" type="button" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
                             </form>
                         </div>
 
@@ -110,9 +114,9 @@
                             <form>
                                 <div class="mb-3 w-25">
                                     <label class="form-label">ID</label>
-                                    <input class="form-control" id="hotelId">
+                                    <input id="CarDeleteId" class="form-control" id="hotelId">
                                 </div>
-                                <button  type="submit" class="btn btn-danger" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
+                                <button id="CarDeleteBtn" type="button" class="btn btn-danger" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
                             </form>
                         </div>
         </section>
@@ -134,7 +138,7 @@
                                 arrivalTime: req.body.arrivalTime,
                                 arrivalDate: req.body.arrivalDate
                             -->
-                            <form>
+                            <form id="FlightAddForm">
                                 <div class="mb-1">
                                     <label  class="form-label">Preis pro Sitz</label>
                                     <input class="form-control" id="FlugPreis">
@@ -171,7 +175,7 @@
                                     <label class="form-label">Ankunftsdatum</label>
                                     <input class="form-control" id="FlugAnkunftsdatum">
                                 </div>
-                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
+                                <button id="FlightAddBtn" type="button" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
                             </form>
                         </div>
 
@@ -179,45 +183,61 @@
                         <div id="hotelRatingBearbeiten" class="m-5 w-50">
                             <p class="" style="border-bottom:2px solid #fc3c5c">Flights Datenbank Eintrag bearbeiten</p>
 
-                            <form id="form">
+                            <form id="FlightPutForm">
                                 <div class="mb-1">
-                                    <label  class="form-label">Kategorie</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenKategorie">
+                                    <label  class="form-label">ID</label>
+                                    <input class="form-control" id="FlugBearbeitenId">
                                 </div>
                                 <div class="mb-1">
-                                    <label class="form-label">Rating</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenRating">
+                                    <label  class="form-label">Preis pro Sitz</label>
+                                    <input class="form-control" id="FlugBearbeitenPreis">
                                 </div>
                                 <div class="mb-1">
-                                    <label class="form-label">Titel</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenTitel">
+                                    <label class="form-label">Start</label>
+                                    <input class="form-control" id="FlugBearbeitenStart">
                                 </div>
                                 <div class="mb-1">
-                                    <label class="form-label">Beschreibung</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenBeschreibung">
+                                    <label class="form-label">Ziel</label>
+                                    <input class="form-control" id="FlugBearbeitenZiel">
                                 </div>
                                 <div class="mb-1">
-                                    <label class="form-label">Land</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenLand">
+                                    <label class="form-label">Flugzeit</label>
+                                    <input class="form-control" id="FlugBearbeitenZeit">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Flugklasse</label>
+                                    <input class="form-control" id="FlugBearbeitenDatum">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Stadt</label>
-                                    <input class="form-control" id="hotelRatingBearbeitenStadt">
+                                    <label class="form-label">Abflugzeit</label>
+                                    <input class="form-control" id="FlugBearbeitenAbflugszeit">
                                 </div>
-                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
+                                <div class="mb-3">
+                                    <label class="form-label">Abflugdatum</label>
+                                    <input class="form-control" id="FlugBearbeitenAbflugDatum">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ankunftszeit</label>
+                                    <input class="form-control" id="FlugBearbeitenAnkunftszeit">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ankunftsdatum</label>
+                                    <input class="form-control" id="FlugBearbeitenAnkunftsdatum">
+                                </div>
+                                <button id="FlightPutBtn" type="button" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
                             </form>
                         </div>
 
 
-                        <div id="HotelEntfernen" class="m-5 w-50">
+                        <div class="m-5 w-50">
                             <p class="" style="border-bottom:2px solid #fc3c5c">Flights Datenbank Eintrag entfernen</p>
 
                             <form>
                                 <div class="mb-3 w-25">
                                     <label class="form-label">ID</label>
-                                    <input class="form-control" id="hotelRaingId">
+                                    <input id="FlightDeleteId" class="form-control" id="hotelRaingId">
                                 </div>
-                                <button  type="submit" class="btn btn-danger"style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
+                                <button id="FlightDeleteBtn" type="button" class="btn btn-danger"style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
                             </form>
                         </div>
             </section>
@@ -238,6 +258,7 @@
         <p class="text-center text-muted">© 2022 Company, Inc</p>
       </footer>
 
+    <script src="flightAndCarDashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

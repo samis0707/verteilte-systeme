@@ -184,10 +184,13 @@ router.put('/:id', checkFlight, async(req, res) => {
     try {
         res.flight.pricePerSeat = req.body.pricePerSeat;
         res.flight.start = req.body.start;
-        res.flight.title = req.body.title;
-        res.flight.description = req.body.description;
-        res.flight.country = req.body.country;
-        res.flight.city = req.body.city;
+        res.flight.destination = req.body.destination,
+        res.flight.flightTime =  req.body.flightTime,
+        res.flight.flightClass = req.body.flightClass,
+        res.flight.departureTime = req.body.departureTime,
+        res.flight.departureDate = req.body.departureDate,
+        res.flight.arrivalTime = req.body.arrivalTime,
+        res.flight.arrivalDate = req.body.arrivalDate
 
         const updatedflight = await res.flight.save();
         res.status(201).json(updatedflight);

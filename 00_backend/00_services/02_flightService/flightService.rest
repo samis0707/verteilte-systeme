@@ -49,13 +49,13 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:3002/646cfc28559fda211fad45ca
+PUT http://localhost:3002/646e770478ea0917de070f0b
 Content-Type: application/json
 
 {
     "pricePerSeat": 499,
     "start": "SLA",
-    "destination": "YYZ",
+    "destination": "YYsssZ",
     "flightTime": 5,
     "flightClass": "economy",
     "departureTime": "16848639601",
