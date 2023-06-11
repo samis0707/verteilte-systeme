@@ -178,6 +178,7 @@ router.put('/:id', checkHotel, async(req, res) => {
 
     } catch (err) { 
         res.status(400).json({ message: err.message });
+        res.status(404).json({ message: err.message });
     }
 })
 
