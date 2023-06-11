@@ -36,15 +36,15 @@ POST http://localhost:3002/add
 Content-Type: application/json
 
 {
-    "pricePerSeat": 499,
-    "start": "SLA",
-    "destination": "YYZ",
-    "flightTime": 5,
-    "flightClass": "economy",
-    "departureTime": "16848639601",
-    "departureDate": "1684863960",
-    "arrivalTime": "1684863960",
-    "arrivalDate": "1684863960"
+    "pricePerSeat": 2500,
+    "start": "Frankfurt",
+    "destination": "Sydney",
+    "flightTime": 20,
+    "flightClass": "Economy",
+    "departureTime": "13423423423",
+    "departureDate": "168960",
+    "arrivalTime": "23423434",
+    "arrivalDate": "2342342342"
 }
 
 

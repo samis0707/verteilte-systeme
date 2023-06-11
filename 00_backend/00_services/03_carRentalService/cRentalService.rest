@@ -26,12 +26,12 @@ POST http://localhost:3003/add
 Content-Type: application/json
 
 {
-    "pricePerDay": 90,
-    "brand": "TOYOTA",
-    "model": "YARIS",
-    "releaseDate": 1684970603,
+    "pricePerDay": 340,
+    "brand": "Audi",
+    "model": "A3",
+    "releaseDate": 2017,
     "doorQuant": 5,
-    "seats": 7
+    "seats": 5
 }
 
 
