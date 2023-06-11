@@ -4,6 +4,10 @@ const dbSchema = require('./dbSchema_03');
 
 const router = express.Router();
 
+//CORS für Cross Site Requests
+const cors = require('cors');
+router.use(cors());
+
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
 

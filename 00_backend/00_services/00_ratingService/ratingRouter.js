@@ -1,7 +1,6 @@
 // Express.JS
 const express = require('express');
 const dbSchema = require('./dbSchema');
-// CORS importieren
 const router = express.Router();
 
 // Server soll mit JSON arbeiten dürfen

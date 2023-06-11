@@ -1,25 +1,25 @@
-### alle Ratings
+### alle Car Rentals
 GET http://localhost:3003/all
 
-### Ratings nach ID
+### Car Rentals nach ID
 GET http://localhost:3003/id/646e804307dcdbeb3e289e7e
 
-### Ratings nach pricePerDay
+### Car Rentals nach pricePerDay
 GET http://localhost:3003/priceperday/90
 
-### Ratings nach brand
+### Car Rentals nach brand
 GET http://localhost:3003/brand/toy
 
-### Ratings nach model
+### Car Rentals nach model
 GET http://localhost:3003/model/ya
 
-### Ratings nach releaseDate
+### Car Rentals nach releaseDate
 GET http://localhost:3003/releaseDate/1684970603
 
-### Ratings nach doorQuant
+### Car Rentals nach doorQuant
 GET http://localhost:3003/doorQuant/5
 
-### Ratings nach seats
+### Car Rentals nach seats
 GET http://localhost:3003/seats/3
 
 ### Rating hinzufügen
@@ -36,7 +36,7 @@ Content-Type: application/json
 }
 
 
-###
+### Car Rental aktualisieren
 PUT http://localhost:3003/646e804307dcdbeb3e289e7e
 Content-Type: application/json
 
@@ -49,7 +49,7 @@ Content-Type: application/json
     "seats": 7
 }
 
-###
+### Eventuell noch zusätzlich
 PATCH  http://localhost:3000/645e6e3c3bfb288684990525
 Content-Type: application/json
 
