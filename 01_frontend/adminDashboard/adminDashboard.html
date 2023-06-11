@@ -10,7 +10,7 @@
 <body>
     <Nav>
         <div style="height: 10vh; background-color: #fc3c5c;">
-        <h3 class="py-4">Admin Dashboard</h5>
+        <h3 class="py-4 ms-3">Admin Dashboard</h5>
         </div>
     </Nav>
 
@@ -57,38 +57,14 @@
                                     <label class="form-label">Stadt</label>
                                     <input class="form-control" id="hotelStadt">
                                 </div>
-                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7);">Hinzufügen</button>
+                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
                             </form>
                         </div>
-                        
 
-                        <div id="HotelEntfernen" class="m-5 w-50">
-                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotel entfernen</p>
 
-                            <form>
-                                <div class="mb-3 w-25">
-                                    <label class="form-label">ID</label>
-                                    <input class="form-control" id="hotelId">
-                                </div>
-                                <button  type="submit" class="btn btn-danger">Entfernen</button> 
-                            </form>
-                        </div>
-        </section>
+                        <div id="hotelBearbeiten" class="m-5 w-50">
+                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotel bearbeiten</p>
 
-        <section>
-            <div class="my-5" id="DatenbankBearbeiten">
-                <h5 class="ms-3 border-bottom">Hotelrating Datenbank Bearbeiten</h5>
-                        <div id="HotelHinzufügen" class="m-5 w-50">
-                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotel Rating hinzufügen</p>
-
-                            <!--Form Daten
-                                category: req.body.category,
-                                rating: req.body.rating,
-                                title: req.body.title,
-                                description:  req.body.description,
-                                country: req.body.country,
-                                city: req.body.city,
-                            -->
                             <form>
                                 <div class="mb-1">
                                     <label  class="form-label">Preis</label>
@@ -112,9 +88,99 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Stadt</label>
-                                    <input class="form-control" id="hotelStadt">asdasd
+                                    <input class="form-control" id="hotelStadt">
                                 </div>
-                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7);">Hinzufügen</button>
+                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
+                            </form>
+                        </div>
+
+
+                        <div id="HotelEntfernen" class="m-5 w-50">
+                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotel entfernen</p>
+
+                            <form>
+                                <div class="mb-3 w-25">
+                                    <label class="form-label">ID</label>
+                                    <input class="form-control" id="hotelId">
+                                </div>
+                                <button  type="submit" class="btn btn-danger" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
+                            </form>
+                        </div>
+        </section>
+
+        <section>
+            <div class="my-5" id="DatenbankBearbeiten">
+                <h5 class="ms-3 border-bottom">Hotelrating Datenbank Bearbeiten</h5>
+                        <div id="HotelHinzufügen" class="m-5 w-50">
+                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotel rating hinzufügen</p>
+
+                            <!--Form Daten
+                                category: req.body.category,
+                                rating: req.body.rating,
+                                title: req.body.title,
+                                description:  req.body.description,
+                                country: req.body.country,
+                                city: req.body.city,
+                            -->
+                            <form>
+                                <div class="mb-1">
+                                    <label  class="form-label">Kategorie</label>
+                                    <input class="form-control" id="hotelRatingKategorie">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Rating</label>
+                                    <input class="form-control" id="hotelRatingRating">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Titel</label>
+                                    <input class="form-control" id="hotelRatingTitel">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Beschreibung</label>
+                                    <input class="form-control" id="hotelRatingBeschreibung">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Land</label>
+                                    <input class="form-control" id="hotelRatingLand">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Stadt</label>
+                                    <input class="form-control" id="hotelRatingStadt">
+                                </div>
+                                <button type="submit" class="btn" style="background-color: rgb(7, 223, 7); --bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Hinzufügen</button>
+                            </form>
+                        </div>
+
+
+                        <div id="hotelRatingBearbeiten" class="m-5 w-50">
+                            <p class="" style="border-bottom:2px solid #fc3c5c">Hotelrating bearbeiten</p>
+
+                            <form id="form">
+                                <div class="mb-1">
+                                    <label  class="form-label">Kategorie</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenKategorie">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Rating</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenRating">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Titel</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenTitel">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Beschreibung</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenBeschreibung">
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Land</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenLand">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Stadt</label>
+                                    <input class="form-control" id="hotelRatingBearbeitenStadt">
+                                </div>
+                                <button type="submit" class="btn btn-warning btn-block" style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 40px; --bs-btn-font-size: 12px;">Bearbeiten</button>
                             </form>
                         </div>
 
@@ -124,20 +190,18 @@
 
                             <form>
                                 <div class="mb-3 w-25">
-                                    <label for="exampleInputEmail1" class="form-label">ID</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label class="form-label">ID</label>
+                                    <input class="form-control" id="hotelRaingId">
                                 </div>
-                                <button  type="submit" class="btn btn-danger">Entfernen</button> 
+                                <button  type="submit" class="btn btn-danger"style="--bs-btn-padding-y: 8px; --bs-btn-padding-x: 45px; --bs-btn-font-size: 12px;">Entfernen</button> 
                             </form>
                         </div>
             </section>
-
-                
-        </div>    
+    
     </main>
 
 
-
+        <!-- Footer noch bearbeiten-->
 
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
