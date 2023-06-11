@@ -1,8 +1,11 @@
 // Express.JS
 const express = require('express');
 const dbSchema = require('./dbSchema_01');
+const cors = require('cors');
 
+router.use(cors());
 const router = express.Router();
+
 
 // Server soll mit JSON arbeiten dürfen
 router.use(express.json());
