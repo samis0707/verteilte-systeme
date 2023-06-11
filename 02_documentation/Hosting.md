@@ -3,7 +3,10 @@ Im folgenden Abschnitt werden 4 HostingAnbieter betracht, die für die Bereitste
 
 
 ## Amazon Web Services (AWS)
-**Funktionalität:** AWS bietet eine breite Palette von Services, darunter Elastic Compute Cloud (EC2) für die Bereitstellung von virtuellen Maschinen, Elastic Load Balancer für die Verteilung des Netzwerkverkehrs, Simple Storage Service (S3) für die Speicherung von Dateien, und viele weitere Dienste, die für die Skalierung und Verwaltung von verteilten Systemen geeignet sind.
+
+### Funktionalität
+
+AWS bietet eine breite Palette von Services, darunter Elastic Compute Cloud (EC2) für die Bereitstellung von virtuellen Maschinen, Elastic Load Balancer für die Verteilung des Netzwerkverkehrs, Simple Storage Service (S3) für die Speicherung von Dateien, und viele weitere Dienste, die für die Skalierung und Verwaltung von verteilten Systemen geeignet sind.
 
 Für das verteilte System können folgedne AWS-Services genutzt werden:
 
@@ -12,7 +15,7 @@ Für das verteilte System können folgedne AWS-Services genutzt werden:
 - RDS (Relational Database Service) für die Speicherung der Daten in den Backend-Servern.
 - Elastic Load Balancer für die Lastverteilung zwischen den Web-Frontends und den Servern
 
-**Kosten**
+### Kosten
 
 **EC2:** Die Kosten für EC2 hängen von der Anzahl und Art der verwendeten Instanzen ab. Für ein Webfrontend und vier Backend-Server könnte dies zwischen 50$ und 200$ pro Monat liegen.
 
