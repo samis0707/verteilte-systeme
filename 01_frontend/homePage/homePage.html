@@ -4,12 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/baggage.png">
+    <title>ValidVacation</title>
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Home</title>
+    <!-- JavaScript for GitHub Icon-->
+    <script src="https://kit.fontawesome.com/92616ce9a3.js" crossorigin="anonymous"></script>
+    <!-- Javascript for API Requests and Card rendering -->
+    <script src="homePage.js"></script>
 </head>
-<body>
-    
-
+<body class="bg-light">
+    <div class="shadow-lg sticky-top">
+        <!-- Navigationbar -->
+        <nav class="navbar container-fluid navbar-expand-lg bg-light bg-body-tertiary pt-lg-2">
+            <div class="container">
+                <a class="navbar-brand fs-2 fw-bold" href="homePage.html">
+                    ValidVacation</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-lg-2">
+                        <a class="nav-link diabled" aria-current="page" href="#">"Coming Soon!"</a>
+                    </li>
+                </ul>
+                    <!-- Search Functionality-->                
+                <form class="d-flex" role="search">
+                    <input id="searchInput" class="form-control me-2" type="Gut Glück!" placeholder="Begriff in Bewertung mit.." aria-label="Search">
+                    <div class="btn btn-outline-dark" onclick="generateHref()" type="submit">Suchen!</div>
+                </form>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- "Body" -->
+    <div id="mainContent" class="">
+        <div class="container mt-5">
+            <h1>Willkommen bei ValidVacation!</h1>
+            <p>Bei ValidVacation dreht sich alles darum, Ihnen den bestmöglichen Urlaub zu ermöglichen. Wir bieten eine breite Palette von Services an, um Ihnen bei der Planung und Buchung Ihrer Reise zu helfen. Egal, ob Sie nach einem Mietwagen, einem Hotel, Bewertungen oder Flugverbindungen suchen - wir haben alles für Sie!</p>
+            <p><strong>Unser Autovermietungsservice</strong> steht Ihnen zur Verfügung, um Ihnen bei der Suche nach dem perfekten Mietwagen für Ihren Urlaub zu helfen. Egal, ob Sie einen geräumigen SUV für Ihre Familie oder ein schickes Cabrio für eine spritzige Fahrt entlang der Küste suchen, wir haben die richtige Option für Sie.</p>
+            <p><strong>Unser Hotelservice</strong> unterstützt Sie bei der Suche nach dem idealen Hotel für Ihren Aufenthalt. Egal, ob Sie ein luxuriöses Resort, ein gemütliches Bed & Breakfast oder eine budgetfreundliche Unterkunft suchen, wir haben eine große Auswahl an Hotels, aus denen Sie wählen können. Wir bieten detaillierte Informationen zu den Annehmlichkeiten, Preisen, Standorten und vielem mehr, damit Sie die beste Entscheidung treffen können.</p>
+            <p>Mit unserem <strong>Bewertungsservice</strong> können Sie verschiedene Bewertungen zu verschiedenen Kategorien wie Flügen oder Hotels einsehen. Unsere Community teilt ihre Erfahrungen und gibt wertvolle Tipps und Ratschläge, um Ihnen bei der Entscheidungsfindung zu helfen. Sie können sich auf authentische und aktuelle Bewertungen verlassen, um Ihre Reise optimal zu planen.</p>
+            <p><strong>Unser Flugservice</strong> bietet Ihnen eine einfache und effiziente Möglichkeit, die richtige Flugverbindung zu finden. Geben Sie einfach Ihre Präferenzen wie Preis, Klasse, Flugdauer, Start- und Landezeitpunkt und vieles mehr an, und wir präsentieren Ihnen eine Vielzahl von Optionen, die Ihren Anforderungen entsprechen. So können Sie den perfekten Flug für Ihre Reise auswählen und buchen.</p>
+            <p><strong>Bei ValidVacation</strong> liegt uns Ihre Zufriedenheit am Herzen. Unser Ziel ist es, Ihnen ein nahtloses und stressfreies Urlaubserlebnis zu bieten. Egal, ob Sie ein Abenteuer in der Ferne suchen oder einen erholsamen Strandurlaub planen, wir sind hier, um Ihnen zu helfen.</p>
+            <p>Genießen Sie Ihren Urlaub mit ValidVacation und lassen Sie uns gemeinsam Ihre Traumreise verwirklichen!</p>
+        </div>
+    </div>
+    <!-- Responsive by screen size-->
+    <div class="container d-none d-md-block">
+        <div class="btn-group  col-12 py-2" role="group" aria-label="origin area group">
+            <button onclick="createCardsByCRental()" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Autovermietung</button>
+            <button onclick="createCardsByHotel()" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Hotelsuche</button>
+            <button onclick="createCardsByFlug()" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Flüge</button>
+            <button onclick="createCardsByService()" class="btn btn-outline-dark darkgoldenrod btn-sm" type="button">Bewertungen</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cardContainer">
+            <!-- Creation of cards by service-->
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="container-fluid footer mt-5 pt-3 text-center">&copy; 2023 <i>"Suffering From Success"</i>
+        ~ ValidVacation </a>  Samis Ellsässer, Tom Heneka, Mercan Zeyrek
+        <a class="nav-link active" aria-current="page" href="https://github.com/samis0707/verteilte-systeme">
+        <i class="fa-brands fa-github"></i>
+        </a>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
