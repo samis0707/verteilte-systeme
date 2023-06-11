@@ -50,6 +50,7 @@ Für das verteilte System können folgedne GCP-Services genutzt werden:
 
 **Load Balancer:** Die Kosten variieren je nach Datenverkehr und Anzahl der Anfragen. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
 
+**Gesamtkosten:** Die Gesmatkosten würden ca. 100$ bis 300$ betragen. 
 
 ## Microsoft Azure 
 
@@ -102,7 +103,7 @@ Heroku bietet eine automatische Skalierung. Die Ressourcen können basierend auf
 
 
 
-## Wahl für Heroku 
+## Gründe für die Wahl von Heroku 
 
 ### Einfache Bereitstellung
 
