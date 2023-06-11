@@ -19,7 +19,7 @@ Für das verteilte System können folgedne AWS-Services genutzt werden:
 
 **EC2:** Die Kosten für EC2 hängen von der Anzahl und Art der verwendeten Instanzen ab. Für ein Webfrontend und vier Backend-Server könnte dies zwischen 50$ und 200$ pro Monat liegen.
 
-**API Gateway:** Die Kosten variieren je nach Anzahl der API-Aufrufe und Datenübertragung. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
+**API Gateway:** Die Kosten variieren je nach Anzahl der API-Aufrufe und Datenübertragung. Eine grobe Schätzung könnte bei 50$ pro Monat liegen.
 
 **RDS:** Die Kosten hängen von der Größe und dem Speicherbedarf der Datenbank ab. Eine Schätzung könnte zwischen 20$ und 100$ pro Monat liegen.
 
