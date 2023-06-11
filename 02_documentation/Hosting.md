@@ -12,6 +12,13 @@ Für das verteilte System können folgedne AWS-Services genutzt werden:
 - RDS (Relational Database Service) für die Speicherung der Daten in den Backend-Servern.
 - Elastic Load Balancer für die Lastverteilung zwischen den Web-Frontends und den Servern
 
+**Kosten**
+**EC2:** Die Kosten für EC2 hängen von der Anzahl und Art der verwendeten Instanzen ab. Für ein Webfrontend und vier Backend-Server könnte dies zwischen $50 und $200 pro Monat liegen.
+**API Gateway:** Die Kosten variieren je nach Anzahl der API-Aufrufe und Datenübertragung. Eine grobe Schätzung könnte bei $10 bis $50 pro Monat liegen.
+**RDS:** Die Kosten hängen von der Größe und dem Speicherbedarf der Datenbank ab. Eine Schätzung könnte zwischen $20 und $100 pro Monat liegen.
+**Elastic Load Balancer:** Die Kosten variieren je nach Anzahl der Anfragen und dem Datenverkehr. Eine grobe Schätzung könnte bei $10 bis $50 pro Monat liegen.
+
+**Gesamtkosten:** Die Gesmatkosten würden ca. 100$ bis 300$ betragen. 
 
 ## Google Cloud Platform (GCP)
 **Funktionalität:** GCP bietet ähnliche Services wie AWS, darunter Compute Engine für virtuelle Maschinen, Load Balancer für die Verteilung des Netzwerkverkehrs und Cloud Storage für die Dateispeicherung. GCP bietet auch spezifische Dienste wie App Engine und Kubernetes Engine für die Bereitstellung und Verwaltung von skalierbaren Anwendungen.
