@@ -1,5 +1,5 @@
 # Wahl eines Hostinganbieters
-Im folgenden Abschnitt werden 4 HostingAnbieter betracht, die für die Bereitstellung eines verteileten Systems geignet sein können.
+Im folgenden Abschnitt werden 4 Hostinganbieter betracht, die für die Bereitstellung eines verteileten Systems geignet sein können.
 
 
 ## Amazon Web Services (AWS)
@@ -50,6 +50,7 @@ Für das verteilte System können folgedne GCP-Services genutzt werden:
 
 **Load Balancer:** Die Kosten variieren je nach Datenverkehr und Anzahl der Anfragen. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
 
+**Gesamtkosten:** Die Gesmatkosten würden ca. 100$ bis 300$ betragen. 
 
 ## Microsoft Azure 
 
@@ -78,3 +79,48 @@ Heroku ist eine Platform-as-a-Service (PaaS)-Lösung, die speziell für die schn
 
 ### Kosten
 Für den Anfang könnten wir das Standrdpaket von Heroku nutzen. Dies würde sich auf max. 50$ im Monat beschränken. Wenn dies nicht ausreichend wäre könnte man auf das Performance Paket in Höhe von 250$ erweiteren.  
+
+## Vergleich der Anbieter in Bezug auf die Skalierbarkeit 
+
+### AWS (Amazon Web Services)
+
+AWS bietet eine breite Palette von Skalierungsoptionen für verschiedene Dienste. Sie können Auto Scaling verwenden, um Ihre Anwendungen basierend auf vordefinierten Metriken automatisch zu skalieren. AWS bietet auch Elastic Load Balancing, um den Verkehr auf mehrere Instanzen zu verteilen und so eine skalierbare Infrastruktur zu schaffen.
+AWS bietet auch Dienste wie Amazon Aurora (eine skalierbare relationale Datenbank) und Amazon DynamoDB (ein vollständig verwalteter NoSQL-Datenbankdienst), die eine automatische Skalierung ermöglichen, um mit wachsenden Workloads umzugehen.
+
+### GCP (Google Cloud Platform)
+
+GCP bietet ähnliche Skalierungsoptionen wie AWS. Sie können beispielsweise mit der Auto Scaling-Funktion von Google Cloud Compute Engine Ihre VM-Instanzen automatisch skalieren, um die Nachfrage zu bewältigen.
+GCP bietet auch Load Balancing-Dienste wie den HTTP(S) Load Balancer und den Network Load Balancer, um den Verkehr auf skalierbare Gruppen von Instanzen zu verteilen.
+
+### Microsoft Azure
+
+Azure bietet verschiedene Skalierungsoptionen, darunter die automatische Skalierung von virtuellen Maschinen, App Services und Funktionen. Sie können auch den Azure Load Balancer verwenden, um den Verkehr auf skalierbare Gruppen von Instanzen zu verteilen.
+Azure bietet auch Dienste wie den Azure Cosmos DB (eine globale verteilte Datenbank) und den Azure SQL Database Hyperscale, die eine automatische Skalierung für wachsende Workloads ermöglichen.
+
+### Heroku
+
+Heroku bietet eine automatische Skalierung. Die Ressourcen können basierend auf der Anzahl der eingehenden Anfragen automatisch skaliert werden. Heroku übernimmt das Ressourcenmanagement und erleichtert die Skalierung der Anwendungen.
+
+
+
+## Gründe für die Wahl von Heroku 
+
+### Einfache Bereitstellung
+
+Heroku bietet eine einfache Bereitstellung von Anwendungen. Mit wenigen Schritten kann die Anwendung auf der Plattform bereitgestellt werden, ohne sich um die Konfiguration und das Management der zugrunde liegenden Infrastruktur kümmern zu müssen. Dies erleichtert die Einrichtung und den Betrieb der Anwendung erheblich.
+
+### Automatische Skalierung
+
+Heroku bietet automatische Skalierungsfunktionen, mit dem die Anwendung basierend auf dem eingehenden Verkehr automatisch hoch- oder herunterskaliert werden kann. Dies ermöglicht es die Anwendung, effizient mit sich ändernden Workloads umzugehen und eine optimale Leistung zu gewährleisten.
+
+### Verwaltete Dienste
+
+Heroku bietet eine Vielzahl von verwalteten Diensten wie PostgreSQL-Datenbanken, Caching, Protokollierung und mehr. Diese Dienste erleichtern die Integration wichtiger Funktionen in der Anwendung und entlasten die Verwaltung und Wartung dieser Komponenten.
+
+### Plattformunabhängigkeit
+
+Heroku unterstützt verschiedene Programmiersprachen und Frameworks, darunter Node.js, Ruby, Python, Java und mehr. Dadurch hat man die Flexibilität, seine Anwendung in der Sprache seiner Wahl zu entwickeln und auf Heroku zu hosten.
+
+### Entwicklerfreundlichkeit 
+
+Heroku hat sich einen Ruf als benutzerfreundliche Plattform erworben. Es bietet eine intuitive Benutzeroberfläche, eine umfangreiche Dokumentation und ein unterstützendes Entwickler-Ökosystem. Dies erleichtert die Entwicklung, Bereitstellung und Skalierung von Anwendungen für Entwickler.
