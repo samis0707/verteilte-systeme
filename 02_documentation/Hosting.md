@@ -19,7 +19,7 @@ Für das verteilte System können folgedne AWS-Services genutzt werden:
 
 **EC2:** Die Kosten für EC2 hängen von der Anzahl und Art der verwendeten Instanzen ab. Für ein Webfrontend und vier Backend-Server könnte dies zwischen 50$ und 200$ pro Monat liegen.
 
-**API Gateway:** Die Kosten variieren je nach Anzahl der API-Aufrufe und Datenübertragung. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
+**API Gateway:** Die Kosten variieren je nach Anzahl der API-Aufrufe und Datenübertragung. Eine grobe Schätzung könnte bei 50$ pro Monat liegen.
 
 **RDS:** Die Kosten hängen von der Größe und dem Speicherbedarf der Datenbank ab. Eine Schätzung könnte zwischen 20$ und 100$ pro Monat liegen.
 
@@ -63,8 +63,18 @@ Für das verteilte System können folgedne Azure-Services genutzt werden:
 - API Management zum Erstellen, Verwalten und Sichern von APIs.
 - Azure SQL Database für die Speicherung der Daten in den Backend-Servern.
 - Load Balancer für die Lastverteilung zwischen den Web-Frontends und den Servern.
+### Kosten 
+
+**Virtuelle Maschine:** Die Kosten variieren nach Größe und Anzahl der Verwendung
+
+**API Management:** Das Developerangebot beträgt ca. 50$ pro Monat und das BAsicanegbot beträgt ca. 190$ pro Monat für eine maximale Anzahl von 1 Millionen API Vorgängen.
+
+**Azure SQL Database:** Die Kosten für einen GB betragen 0,28$ pro Monat.
+
+**Load Balancer:** Die ersten 5 Regeln betragen 0,025$ pro Stunde und für jede weitere Regele zahlt man 0,01$ pro Stunde. 
 
 ## Heroku 
 Heroku ist eine Platform-as-a-Service (PaaS)-Lösung, die speziell für die schnelle Bereitstellung und Skalierung von Webanwendungen entwickelt wurde. Im Gegensatz zu den zuvor genannten Cloud-Providern bietet Heroku eine vereinfachte Entwicklungs- und Bereitstellungserfahrung, bei der sich Entwickler weniger um die Infrastruktur kümmern müssen.
 
-Kosten: 
+### Kosten
+Für den Anfang könnten wir das Standrdpaket von Heroku nutzen. Dies würde sich auf max. 50$ im Monat beschränken. Wenn dies nicht ausreichend wäre könnte man auf das Performance Paket in Höhe von 250$ erweiteren.  
