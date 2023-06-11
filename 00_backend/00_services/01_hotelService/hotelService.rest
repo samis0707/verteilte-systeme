@@ -2,25 +2,25 @@
 GET http://localhost:3001/all
 
 ### Hotels nach ID
-GET http://localhost:3001/id/645e8485ccb07269fece931a
+GET http://localhost:3001/id/
 
 ### Hotels nach price_category
-GET http://localhost:3001/price_category/günstig
+GET http://localhost:3001/price_category/
 
 ### Hotels nach beds
-GET http://localhost:3001/beds/2
+GET http://localhost:3001/beds/
 
 ### Hotels nach title
-GET http://localhost:3001/title/hotel
+GET http://localhost:3001/title/
 
 ### Hotels nach description
-GET http://localhost:3001/description/pleb
+GET http://localhost:3001/description/
 
 ### Hotels nach country
-GET http://localhost:3001/country/spain
+GET http://localhost:3001/country/
 
 ### Hotels nach city
-GET http://localhost:3001/city/darcelona
+GET http://localhost:3001/city/
 
 
 
@@ -39,8 +39,8 @@ Content-Type: application/json
 }
 
 
-###
-PUT http://localhost:3001/645e8485ccb07269fece931a
+### Eintrag aktualisieren
+PUT http://localhost:3001/
 Content-Type: application/json
 
 {
@@ -53,8 +53,8 @@ Content-Type: application/json
     "city": "barcelona"
 }
 
-###
-PATCH  http://localhost:3000/645e8485ccb07269fece931a
+### Eventuell später
+PATCH  http://localhost:3000/
 Content-Type: application/json
 
 {
@@ -62,5 +62,5 @@ Content-Type: application/json
 }
 
 
-###
-DELETE http://localhost:3001/645e8485ccb07269fece931a
+### Eintrag löschen
+DELETE http://localhost:3001/

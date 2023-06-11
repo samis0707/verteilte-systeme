@@ -2,25 +2,25 @@
 GET http://localhost:3000/all
 
 ### Ratings nach ID
-GET http://localhost:3000/id/645e61178b8c02e9fabb62ee
+GET http://localhost:3000/id/
 
 ### Ratings nach category
 GET http://localhost:3000/category/City
 
 ### Ratings nach rating
-GET http://localhost:3000/rating/4
+GET http://localhost:3000/rating/
 
 ### Ratings nach title
-GET http://localhost:3000/title/stadt
+GET http://localhost:3000/title/
 
 ### Ratings nach description
-GET http://localhost:3000/description/Wenig
+GET http://localhost:3000/description/
 
 ### Ratings nach country
-GET http://localhost:3000/country/Germany
+GET http://localhost:3000/country/
 
 ### Ratings nach city
-GET http://localhost:3000/city/Stuttgart
+GET http://localhost:3000/city/
 
 
 
@@ -29,30 +29,30 @@ POST http://localhost:3000/add
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 4,
-    "title": "Stadt Stuttgart",
-    "description": "Schöne Stadt, man kann wenig machen",
-    "country": "germany",
-    "city": "stuttgart"
+    "category": "Stadt",
+    "rating": 9,
+    "title": "Was der Süden alles zu bieten hat",
+    "description": "Augsburg gehört definitiv zu den schönsten Städten Deutschlands",
+    "country": "Deutschland",
+    "city": "Augsburg"
 }
 
 
-###
-PUT http://localhost:3000/645e61178b8c02e9fabb62ee
+### Eintrag aktualisieren
+PUT http://localhost:3000/
 Content-Type: application/json
 
 {
-    "category": "city",
-    "rating": 7,
-    "title": "Karlsruhe",
-    "description": "Bombe man!",
-    "country": "germany",
-    "city": "Karlsruhe"
+    "category": "Stadt",
+    "rating": 3,
+    "title": "Sieht aus wie am ASB 8",
+    "description": "Das Wollhaus gibt der Stadt den Rest! Wusste ja schon dass des schwierig wird hier aber sowas, näh",
+    "country": "Deutschland",
+    "city": "Heilbronn"
 }
 
-###
-PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+### Eventuell zusätzlich
+PATCH  http://localhost:3000/
 Content-Type: application/json
 
 {
@@ -60,5 +60,5 @@ Content-Type: application/json
 }
 
 
-###
-DELETE http://localhost:3000/645e715958599b38ea0b61c4
+### Eintrag löschen
+DELETE http://localhost:3000/

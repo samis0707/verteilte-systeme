@@ -1,35 +1,35 @@
-### alle Ratings
+### alle Flüge
 GET http://localhost:3002/all
 
-### Ratings nach ID
-GET http://localhost:3002/id/646cfc28559fda211fad45ca
+### Flüge nach ID
+GET http://localhost:3002/id/
 
-### Ratings nach pricePerSeat
-GET http://localhost:3002/pricePerSeat/499
+### Flüge nach pricePerSeat
+GET http://localhost:3002/pricePerSeat/
 
-### Ratings nach start
-GET http://localhost:3002/start/FRA
+### Flüge nach start
+GET http://localhost:3002/start/
 
-### Ratings nach destination
-GET http://localhost:3002/destination/YYZ
+### Flüge nach destination
+GET http://localhost:3002/destination/
 
-### Ratings nach flightTime
-GET http://localhost:3002/flightTime/5
+### Flüge nach flightTime
+GET http://localhost:3002/flightTime/
 
-### Ratings nach flightClass
-GET http://localhost:3002/flightClass/economy
+### Flüge nach flightClass
+GET http://localhost:3002/flightClass/
 
-### Ratings nach departureTime
-GET http://localhost:3002/departureTime/16848639601
+### Flüge nach departureTime
+GET http://localhost:3002/departureTime/
 
-### Ratings nach departureDate
-GET http://localhost:3002/departureDate/1684863960
+### Flüge nach departureDate
+GET http://localhost:3002/departureDate/
 
-### Ratings nach arrivalTime
-GET http://localhost:3002/arrivalTime/1684863960
+### Flüge nach arrivalTime
+GET http://localhost:3002/arrivalTime/
 
-### Ratings nach arrivalDate
-GET http://localhost:3002/arrivalDate/1684863960
+### Flüge nach arrivalDate
+GET http://localhost:3002/arrivalDate/
 
 ### Rating hinzufügen
 POST http://localhost:3002/add 
@@ -48,8 +48,8 @@ Content-Type: application/json
 }
 
 
-###
-PUT http://localhost:3002/646e770478ea0917de070f0b
+### Eintrag aktualisieren
+PUT http://localhost:3002/
 Content-Type: application/json
 
 {
@@ -64,8 +64,8 @@ Content-Type: application/json
     "arrivalDate": "1684863960"
 }
 
-###
-PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+### Eventuell später
+PATCH  http://localhost:3000/
 Content-Type: application/json
 
 {
@@ -73,5 +73,5 @@ Content-Type: application/json
 }
 
 
-###
-DELETE http://localhost:3002/646cfc28559fda211fad45ca
+### Eintrag löschen
+DELETE http://localhost:3002/

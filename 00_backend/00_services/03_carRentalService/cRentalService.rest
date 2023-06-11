@@ -2,25 +2,24 @@
 GET http://localhost:3003/all
 
 ### Car Rentals nach ID
-GET http://localhost:3003/id/646e804307dcdbeb3e289e7e
+GET http://localhost:3003/id/
 
 ### Car Rentals nach pricePerDay
-GET http://localhost:3003/priceperday/90
+GET http://localhost:3003/priceperday/
 
 ### Car Rentals nach brand
-GET http://localhost:3003/brand/toy
+GET http://localhost:3003/brand/
 
 ### Car Rentals nach model
-GET http://localhost:3003/model/ya
+GET http://localhost:3003/model/
 
 ### Car Rentals nach releaseDate
-GET http://localhost:3003/releaseDate/1684970603
-
+GET http://localhost:3003/releaseDate/
 ### Car Rentals nach doorQuant
-GET http://localhost:3003/doorQuant/5
+GET http://localhost:3003/doorQuant/
 
 ### Car Rentals nach seats
-GET http://localhost:3003/seats/3
+GET http://localhost:3003/seats/
 
 ### Rating hinzufügen
 POST http://localhost:3003/add 
@@ -36,8 +35,8 @@ Content-Type: application/json
 }
 
 
-### Car Rental aktualisieren
-PUT http://localhost:3003/646e804307dcdbeb3e289e7e
+### Eintrag aktualisieren
+PUT http://localhost:3003/
 Content-Type: application/json
 
 {
@@ -50,7 +49,7 @@ Content-Type: application/json
 }
 
 ### Eventuell noch zusätzlich
-PATCH  http://localhost:3000/645e6e3c3bfb288684990525
+PATCH  http://localhost:3000/
 Content-Type: application/json
 
 {
@@ -58,5 +57,5 @@ Content-Type: application/json
 }
 
 
-###
-DELETE http://localhost:3003/646e93876e6c3a9d361d1777
+### Eintrag löschen
+DELETE http://localhost:3003/
