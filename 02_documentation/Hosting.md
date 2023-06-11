@@ -42,17 +42,20 @@ Für das verteilte System können folgedne GCP-Services genutzt werden:
 
 ### Kosten
 
-Compute Engine: Die Kosten variieren je nach Größe und Anzahl der verwendeten virtuellen Maschinen. Eine grobe Schätzung könnte zwischen 50$ und 200$ pro Monat liegen.
+**Compute Engine:** Die Kosten variieren je nach Größe und Anzahl der verwendeten virtuellen Maschinen. Eine grobe Schätzung könnte zwischen 50$ und 200$ pro Monat liegen.
 
-Cloud Functions: Die Kosten hängen von der Anzahl und Dauer der Funktionen ab. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
+**Cloud Functions:** Die Kosten hängen von der Anzahl und Dauer der Funktionen ab. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
 
-Cloud SQL: Die Kosten richten sich nach der Größe der Datenbank und dem Speicherbedarf. Eine Schätzung könnte zwischen 20$ und 100$ pro Monat liegen.
+**Cloud SQL:** Die Kosten richten sich nach der Größe der Datenbank und dem Speicherbedarf. Eine Schätzung könnte zwischen 20$ und 100$ pro Monat liegen.
 
-Load Balancer: Die Kosten variieren je nach Datenverkehr und Anzahl der Anfragen. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
+**Load Balancer:** Die Kosten variieren je nach Datenverkehr und Anzahl der Anfragen. Eine grobe Schätzung könnte bei 10$ bis 50$ pro Monat liegen.
 
 
 ## Microsoft Azure 
-**Funktionalität:** Azure bietet verschiedene Dienste zur Bereitstellung und Verwaltung von verteilten Systemen, darunter Virtual Machines für die Ausführung von Anwendungen, Load Balancer für die Lastverteilung, und Blob Storage für die Dateispeicherung. Azure bietet auch spezifische Dienste wie Azure Functions und Azure Kubernetes Service (AKS) für serverlose und containerisierte Anwendungen.
+
+### Funktionalität
+
+Azure bietet verschiedene Dienste zur Bereitstellung und Verwaltung von verteilten Systemen, darunter Virtual Machines für die Ausführung von Anwendungen, Load Balancer für die Lastverteilung, und Blob Storage für die Dateispeicherung. Azure bietet auch spezifische Dienste wie Azure Functions und Azure Kubernetes Service (AKS) für serverlose und containerisierte Anwendungen.
 
 Für das verteilte System können folgedne Azure-Services genutzt werden:
 
