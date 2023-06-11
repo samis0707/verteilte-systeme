@@ -44,13 +44,13 @@ PUT http://localhost:3001/
 Content-Type: application/json
 
 {
-    "price": 599,
-    "price_category": "teuer",
-    "beds": 5,
-    "title": "Grand Budapest Hotel",
-    "description": "Ich hatte das Vergnügen, im Grand Budapest Hotel zu übernachten und ich kann sagen, dass es ein unvergessliches Erlebnis war. Das Hotel ist sehr luxuriös und stilvoll eingerichtet und es ist leicht zu erkennen, dass hier viel Liebe zum Detail steckt.",
-    "country": "spain",
-    "city": "barcelona"
+    "price": 0,
+    "price_category": "0",
+    "beds": 0,
+    "title": "",
+    "description": "",
+    "country": "",
+    "city": ""
 }
 
 ### Eventuell später

@@ -40,12 +40,12 @@ PUT http://localhost:3003/
 Content-Type: application/json
 
 {
-    "pricePerDay": 100,
-    "brand": "VW",
-    "model": "GOLF",
-    "releaseDate": 1684970603,
-    "doorQuant": 5,
-    "seats": 7
+    "pricePerDay": 0,
+    "brand": "",
+    "model": "",
+    "releaseDate": 0,
+    "doorQuant": 0,
+    "seats": 0
 }
 
 ### Eventuell noch zusätzlich

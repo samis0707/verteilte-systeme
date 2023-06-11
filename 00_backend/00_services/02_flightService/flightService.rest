@@ -53,15 +53,15 @@ PUT http://localhost:3002/
 Content-Type: application/json
 
 {
-    "pricePerSeat": 499,
-    "start": "SLA",
-    "destination": "YYsssZ",
-    "flightTime": 5,
-    "flightClass": "economy",
-    "departureTime": "16848639601",
-    "departureDate": "1684863960",
-    "arrivalTime": "1684863960",
-    "arrivalDate": "1684863960"
+    "pricePerSeat": 0,
+    "start": "",
+    "destination": "",
+    "flightTime": 0,
+    "flightClass": "",
+    "departureTime": "",
+    "departureDate": "",
+    "arrivalTime": "",
+    "arrivalDate": ""
 }
 
 ### Eventuell später

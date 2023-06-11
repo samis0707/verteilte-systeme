@@ -43,12 +43,12 @@ PUT http://localhost:3000/
 Content-Type: application/json
 
 {
-    "category": "Stadt",
-    "rating": 3,
-    "title": "Sieht aus wie am ASB 8",
-    "description": "Das Wollhaus gibt der Stadt den Rest! Wusste ja schon dass des schwierig wird hier aber sowas, näh",
-    "country": "Deutschland",
-    "city": "Heilbronn"
+    "category": "",
+    "rating": 0,
+    "title": "",
+    "description": "",
+    "country": "",
+    "city": ""
 }
 
 ### Eventuell zusätzlich
