@@ -178,19 +178,19 @@ function createCardsByFlug() {
             }
         })   
 }
-// Karten erstellen für Flüge
-function createCardsByFlug() {
+// Karten erstellen für Ratings
+function createCardsByRating() {
 
     let cardContainer = document.getElementById("cardContainer");
     cardContainer.innerHTML = "";
 
-        fetch('http://localhost:3002/all')
+        fetch('http://localhost:3000/all')
         .then(responseURLRequest => responseURLRequest.json())
-        .then(fluege => {
+        .then(ratings => {
 
-            for(var i = 0; i < fluege.length; i++) { 
+            for(var i = 0; i < ratings.length; i++) { 
 
-                var flug = fluege[i];
+                var rating = ratings[i];
 
                 let colDiv = document.createElement("div");
                 colDiv.setAttribute("class", "col");
@@ -202,31 +202,31 @@ function createCardsByFlug() {
                 innerDiv.setAttribute("class", "card-body");
 
                 let captionCaption = document.createElement("h4");
-                captionCaption.innerHTML = "Von: " + flug.start + " Nach: " + flug.destination;
+                captionCaption.innerHTML = rating.title;
                 captionCaption.setAttribute("class", "card-title fw-bold");
 
-                let cardFlightTime = document.createElement("p");
-                cardFlightTime.innerHTML = "Flugzeit: " + flug.flightTime + " Stunden";
+                let cardCategory = document.createElement("p");
+                cardCategory.innerHTML = "Kategorie: " + rating.category;
 
-                let cardDeparture = document.createElement("p");
-                cardDeparture.innerHTML = "Abflugszeit: " + flug.departureTime + "/Ablugsdatum: " + flug.departureDate;
+                let cardDescription = document.createElement("p");
+                cardDescription.innerHTML = rating.description;
 
-                let cardarrival = document.createElement("p");
-                cardarrival.innerHTML = "Ankunftszeit: " + flug.arrivalTime + "/Ankunftsdatum: " + flug.arrivalDate;
+                let cardCountry = document.createElement("p");
+                cardCountry.innerHTML = "Aus dem Land: " + rating.country;
 
-                let cardFlightClass = document.createElement("p");
-                cardFlightClass.innerHTML = "Klasse: " + flug.flightClass;
+                let cardCity = document.createElement("p");
+                cardCity.innerHTML = "Aus der Stadt: "+ rating.city;
 
-                let cardPrice = document.createElement("h5");
-                cardPrice.innerHTML = "Kosten pro Sitzplatz: " + flug.pricePerSeat + "€";
+                let cardRating = document.createElement("h5");
+                cardRating.innerHTML = rating.rating + " von 10 Sternen";
                 //cardPrice.setAttribute("class", "fw-bold");
 
                 innerDiv.appendChild(captionCaption);
-                innerDiv.appendChild(cardFlightTime);
-                innerDiv.appendChild(cardDeparture);
-                innerDiv.appendChild(cardarrival);
-                innerDiv.appendChild(cardFlightClass);
-                innerDiv.appendChild(cardPrice);
+                innerDiv.appendChild(cardCategory);
+                innerDiv.appendChild(cardDescription);
+                innerDiv.appendChild(cardCountry);
+                innerDiv.appendChild(cardCity);
+                innerDiv.appendChild(cardRating);
 
                 outerDiv.appendChild(innerDiv);;
 
